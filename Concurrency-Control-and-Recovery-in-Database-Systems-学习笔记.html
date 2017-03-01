@@ -1,0 +1,727 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, 梦工厂" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Concurrency Control and Recovery in Database Systems 学习笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Concurrency Control and Recovery in Database Systems 学习笔记">
+<meta property="og:url" content="http://zhoumeng.xyz/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记.html">
+<meta property="og:site_name" content="梦工厂's blog">
+<meta property="og:description" content="Concurrency Control and Recovery in Database Systems 学习笔记">
+<meta property="og:updated_time" content="2017-02-28T16:09:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Concurrency Control and Recovery in Database Systems 学习笔记">
+<meta name="twitter:description" content="Concurrency Control and Recovery in Database Systems 学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'zm2014wangyi',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhoumeng.xyz/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记.html"/>
+
+
+
+
+
+  <title>
+  
+
+  
+    Concurrency Control and Recovery in Database Systems 学习笔记 | 梦工厂's blog
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">梦工厂's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">Concurrency Control and Recovery in Database Systems 学习笔记</h1>
+
+
+	<div class="post-meta">
+		<div class="post-description">Concurrency Control and Recovery in Database Systems 学习笔记</div>
+	</div>
+
+
+</header>
+
+    
+    
+      <h3 id="chapter3"><a href="#chapter3" class="headerlink" title="chapter3"></a>chapter3</h3><h4 id="3-2-Basic-two-phase-locking"><a href="#3-2-Basic-two-phase-locking" class="headerlink" title="3.2 Basic two phase locking"></a>3.2 Basic two phase locking</h4><ol>
+<li>一些概念<ul>
+<li>锁的直观概念</li>
+<li>锁的类型，读写锁，加解锁；</li>
+<li>lock table（细节3.6）</li>
+<li>lock conflict</li>
+</ul>
+</li>
+<li>basic version of 2pl<ul>
+<li>2pl的rule（3条，每条的意义）</li>
+<li>示例<br>  思考：1锁表的细节数据＋锁＋事务，还要dm通知的执行结果？<pre><code>2delay的queue是怎样排序的？按照接受的顺序还是相同事务在一起；
+</code></pre></li>
+<li>2pl的问题：死锁<br>  示例1 数据项交叉执行；<br>  示例2 锁转换，读锁升级死锁；</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-3-CORRECTNESS-OF-BASIC-TWO-PHASE-LOCKING"><a href="#3-3-CORRECTNESS-OF-BASIC-TWO-PHASE-LOCKING" class="headerlink" title="3.3 CORRECTNESS OF BASIC TWO PHASE LOCKING"></a>3.3 CORRECTNESS OF BASIC TWO PHASE LOCKING</h4><ol>
+<li><p>scheduler正确性：</p>
+<p> To prove that a scheduler is correct, we have to prove that all histories representing executions that could be produced by it are SR. </p>
+</li>
+<li><p>证明过程</p>
+<p> （1）总结2pl的histories，具有的特点；</p>
+<ul>
+<li>proposition1</li>
+<li>proposition2</li>
+<li><p>proposition3<br>？scheduler的history是一个连续的，流式的；怎么可以一个个的分析呢？</p>
+<p>（2）证明具有这些特点的history一定是SR的，即SG(H)无环；</p>
+</li>
+<li>step1</li>
+<li>step2</li>
+<li>step3</li>
+</ul>
+</li>
+<li>总结<ul>
+<li>lemma1</li>
+<li>lemma2:意思应该是x和y分别为shared data；</li>
+<li>Theorem: Every 2PL history H is serializable;</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-4-DEADLOCKS-既然2pl是正确的，那么就来解决它的问题"><a href="#3-4-DEADLOCKS-既然2pl是正确的，那么就来解决它的问题" class="headerlink" title="3.4 DEADLOCKS (既然2pl是正确的，那么就来解决它的问题)"></a>3.4 DEADLOCKS (既然2pl是正确的，那么就来解决它的问题)</h4><p>scheduler检测deadlock的策略：</p>
+<h5 id="TimeOut"><a href="#TimeOut" class="headerlink" title="TimeOut"></a>TimeOut</h5><ol>
+<li>介绍<br> If the scheduler finds that a trans- action has been waiting too long for a lock, then it simply guesses that there may be a deadlock involving this transaction and therefore aborts it.</li>
+<li>权衡<br> The timeout period is therefore a parameter that needs to be tuned. It should be long enough so that most transactions that are aborted are actually deadlocked, but short enough that deadlocked transac- tions don’t wait too long for their deadlocks to be noticed. </li>
+</ol>
+<h5 id="WFG-wait-for-graph"><a href="#WFG-wait-for-graph" class="headerlink" title="WFG(wait-for-graph)"></a>WFG(wait-for-graph)</h5><ol>
+<li>介绍<br> The nodes of WFG are labelled with transaction names. There is an edge Ti – Tj,from node Ti to node Tj, iff transaction Ti, is waiting for transaction Tj to release some lock.</li>
+<li>WFG 与 SG的区别；<br> 在WFG中Ti -&gt; Tj，也是直接的关系而不是传递的关系；</li>
+<li>maintain a representation of the WFG<br> For example, suppose the scheduler receives YJx], but has to delay it because Tj already owns wl,[x]. Then it adds an edge T; + Tj to the WFG. After Tj releases w~[x], the scheduler sets rl;[x], and therefore deletes the edge Ti -+ Tja</li>
+<li>检测time的权衡</li>
+<li>中断事务选择的因素－&gt;abortion cost least<br> (1)(2)(3)(4)(5)</li>
+</ol>
+<h4 id="3-5-VARIATIONS-OF-TWO-PHASE-LOCKING-变体"><a href="#3-5-VARIATIONS-OF-TWO-PHASE-LOCKING-变体" class="headerlink" title="3.5 VARIATIONS OF TWO PHASE LOCKING 变体"></a>3.5 VARIATIONS OF TWO PHASE LOCKING 变体</h4><h5 id="Conservative-2PL-保守"><a href="#Conservative-2PL-保守" class="headerlink" title="Conservative 2PL 保守"></a>Conservative 2PL 保守</h5><ol>
+<li>Conservative 2PL avoids deadlocks by requiring each transaction to obtain all of its locks before any of its operations are submitted to the DM. This is done by having each transaction predeclare its readset and writeset. </li>
+<li>If, on the other hand, an)’ of the locks requested in T,‘s Start conflicts with<br>locks presently held by other transactions, then the scheduler does not grant any of T,‘s locks.</li>
+<li>Since deadlock is the only reason that a 2PL scheduler ever rejects an operation and thereby causes the corresponding transaction to abort, Conservative 2PL never aborts a transaction. </li>
+</ol>
+<h5 id="Strict-2PL"><a href="#Strict-2PL" class="headerlink" title="Strict 2PL"></a>Strict 2PL</h5><ol>
+<li>介绍<br>almost all implementations of 2PL use a variant called Strict 2PL. This differs from the Basic 2PL scheduler described in Section 3.2 in that it requires the scheduler to release all of a transaction’s locks together, when the transaction terminates. More specifically, Tls locks are released after the DM acknowl- edges the processing of ci or aj。</li>
+<li><p>使用的原因</p>
+<ul>
+<li>释放锁的时间点</li>
+<li>保证严格执行 （p35 严格模式定义）</li>
+</ul>
+</li>
+<li><p>其他</p>
+<ul>
+<li>read lock/write lock 的释放时间</li>
+<li>严格模式好处多多，2PL implementations usually take the form of Strict 2PL schedulers, rather than the seemingly more flexible Basic 2PL schedulers.<br>(比如Basic 2PL：w1(x)-&gt;c1(x)scheduler收到通知，wu1(x),dm之行；w2(x),这时事务1出错需要abort;但是它的值已经被改写了，怎么恢复呢？不能保证严格模式)</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-6-IMPLEMENTATION-ISSUES"><a href="#3-6-IMPLEMENTATION-ISSUES" class="headerlink" title="3.6 IMPLEMENTATION ISSUES"></a>3.6 IMPLEMENTATION ISSUES</h4><ol>
+<li><p>模型的变化（TM+LM+DM）</p>
+<p> The scheduler abstraction is usually implemented by a combination of a lock manager (LM) and a TM. The LM services the Lock and Unlock opera- tions. When the TM receives a Read or Write from a transaction, it sends the appropriate Lock operation to the LM. When the LM acknowledges that the lock is set, the TM sends the Read or Write to the DM. Thus, the TM subsumes the scheduler function of ensuring that a lock is set before the corre- sponding operation is performed.</p>
+</li>
+<li><p>The Lock Manager</p>
+<p> The LM maintains a table of locks, and supports the operations Lock(trans- action-id, data-item, mode) and Unlock(transaction-id, data-item).</p>
+<p> To process a Lock operation, the LM tries to set the specified lock by adding an entry to the lock table. If another transaction owns a conflicting lock, then the LM adds the lock request to a queue of waiting requests for that data item.5 Unlock releases the specified lock, and grants any waiting lock requests that are no longer blocked.</p>
+<p> 通过表项来实现“锁”数据，而不是真有个锁在那；</p>
+<p> 锁表的具体实现：<br> The lock table is usually implemented as a hash table with the data item identifier as key；<br> An entry in the table for data item x contains a queue header, which points to a list of locks on x that have been set and a list of lock requests that are waiting.<br> Since a very large number of data items can potentially be locked, the LM limits the size of the lock table by only allocating entries for those data items that actually are locked. When it releases the last lock for a data item X, it deallocates the entry for X.</p>
+<p> 优化加锁解锁：Lock and Unlock operations are invoked very frequently。<br> To make these operations fast, a common practice is to link together in the lock table all of the read lock entries and all of the write lock entries of each transac- tion.<br> release write and read locks after the Commit. </p>
+<p> The lock table should be protected. </p>
+</li>
+<li><p>Blocking and Aborting Transactions</p>
+<ul>
+<li>等待queue中分配lock的策略：1 first-in-first-out 2 wait time </li>
+<li>Blocking的实现：依赖具体系统</li>
+<li>Aborting的实现：依赖具体系统<br>question： 谁来负责检测死锁？</li>
+</ul>
+</li>
+<li><p>Atomicity of Reads and Writes</p>
+<ul>
+<li>lock table 访问的同步控制；</li>
+<li>磁盘的访问控制；</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-7-THE-PHANTOM-PROBLEM"><a href="#3-7-THE-PHANTOM-PROBLEM" class="headerlink" title="3.7 THE PHANTOM PROBLEM"></a>3.7 THE PHANTOM PROBLEM</h4><ol>
+<li>关于幻读的问题；</li>
+<li>index locking；</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">q: 什么时候是scan，什么时候只是单个读，粒度是怎么来确定的？</div><div class="line">q：了解一下index的具体实现；</div></pre></td></tr></table></figure>
+<h4 id="3-8-LOCKING-ADDlTlONAL-OPERATiONS-扩充操作类型"><a href="#3-8-LOCKING-ADDlTlONAL-OPERATiONS-扩充操作类型" class="headerlink" title="3.8 LOCKING ADDlTlONAL OPERATiONS (扩充操作类型)"></a>3.8 LOCKING ADDlTlONAL OPERATiONS (扩充操作类型)</h4><ol>
+<li>背景hot spots<br> Since Increment and Decrement commute, they can set weaker locks than Write operations, which do not commute. </li>
+<li>conflict的本质：是否commute<br> Decrement(x, vale)] produces exactly the same result as the sequence [Decrement(x, valD), Increment(x, vail)]. That is, each operation returns the same result (i.e., nothing) and the two operations leave x in the same final state, independent of the order in which they execute. </li>
+<li>操作的原子性<br> This technique requires that Increment(x) and Decrement(x) be imple- mented atomically.<br> Thus, while an Increment or Decrement is operating on a data item, the data item is effectively locked (against any other oper- ations on that data item). This lock is only held for the duration of the Increment or Decrement operation. Once the operation is completed, this lock can be released. However, the increment or decrement lock must be held until the transaction commits to satisfy the two phase rule and strictness.</li>
+<li>保证generalized form of 2PL works correctly正确性：<br> So, we can easily add new operation types by following these simple rules:<ol>
+<li>Ensure that the implementation of each new operation type is atomic with respect to all other operation types.</li>
+<li>Define a lock type for each new operation type.</li>
+<li>Define a compatibility matrix for the lock types (for both the old and new operations) so that two lock types conflict iff the corresponding operation types on the same data item do not commute. </li>
+</ol>
+</li>
+</ol>
+<h4 id="3-9-MULTIGRANULARITY-LQCKlNG"><a href="#3-9-MULTIGRANULARITY-LQCKlNG" class="headerlink" title="3.9 MULTIGRANULARITY LQCKlNG"></a>3.9 MULTIGRANULARITY LQCKlNG</h4><ol>
+<li>介绍granularity<br> The granularity of a data item refers to that item’s relative size.<br> The granularity of data items is unimportant as far as correctness is concerned. The granularity is important, however, when it comes to perfor- mance.<br> Selecting a granularity for locks requires striking a balance between lock- ing overhead and amount of concurrency. </li>
+<li><p>MGL</p>
+<ol>
+<li><p>介绍<br>We can do even better than choosing a uniform “optimal” granule size for all data items by means of multigrandarit~ locking (MGL).<br>MGL allows each transaction to use granule sizes most appropriate to its mode of operation. </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">q：一个事务一个粒度还是一个操作一个粒度？</div><div class="line">	一个事务；</div></pre></td></tr></table></figure>
+</li>
+<li><p>实现<br>MGL requires an LM that prevents two transactions from setting conflicting locks on two granules that overlap.<br>一个问题：<br>An unsatisfactory solution would be to require that the long transaction look at each record of the file to find out whether it may lock the file. This would defeat the very purpose of locking at coarse granularity - namely, to reduce locking overhead.<br>解决方法：<br>A better solution is possible by exploiting the natural hierarchical relation ship between locks of different granularity.<br>lock type graph<br>lock instance graph<br>A set of data items that is structured according to a lock type graph is called a lock instance graph (see Fig. 3-4). The graph represents an abstract structure that is used only by the scheduler to manage locks of different granularities. It need not correspond to the physical structure of the data items themselves.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">q：那么实际上是怎么组织的？ 还是不是前边说的hash表和queue？</div></pre></td></tr></table></figure>
+<p>（1）Then a lock on a coarse granule x explicitly locks x and implicitly locks all of x’s proper descendants, which are finer granules “contained in” x. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">q：为什么要给后代加锁？</div></pre></td></tr></table></figure>
+<p>（2）It is also necessary to propagate the effects of fine granule locking activity to the coarse granules that “contain” them. To do this, each lock type has an associated intention lock type. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">目的：细琐向上传递，当我想加一个大锁的时候，可以知道下边已经有小锁了，而不用去一个个查询；</div></pre></td></tr></table></figure>
+</li>
+<li><p>MGL规则：<br>For a given lock instance graph G that is a tree, the scheduler sets and releases locks for each transaction T, according to the following MGL pro- tocol:</p>
+</li>
+<li>If x is not the root of G, then to set rl,[x] or irl,[x], T, must have an ir or iw lock on x’s parent.</li>
+<li>If x is not the root of G, then to set wl,[x] or iwl,[x], T, must have an iw lock on x’s parent.</li>
+<li>To read (or write) x, T, must own an r or w (or w) lock on some ances- tor of x. A lock on x itself is an explicit lock for x; a lock on a proper ancestor of x is an implicit lock for x.</li>
+<li>A transaction may not release an intention lock on a data item X, if it is currently holding a lock on any child of x.<br>This implicit locking relieves a transaction from having to set explicit locks on x’s descendants, which is the main reason for MGL.<br>一个🌰；</li>
+</ol>
+</li>
+<li><p>MGL的正确性<br> The goal of the MGL protocol is to ensure that transactions never hold conflicting (explicit or implicit) locks on the same data item;<br> Theorem 3.7: Suppose all transactions obey the MGL protocol with respect to a given lock instance data graph, G, that is a tree. If a transac- tion owns an explicit or implicit lock on a node of G, then no other trans- action owns a conflicting explicit or implicit lock on that node.</p>
+</li>
+<li><p>Implementation Issues</p>
+<ol>
+<li>2PL+MGL<br>One way of framing the relationship between these two techniques is to say that 2PL gives rules for when to lock and unlock data items. </li>
+<li><p>LM<br>The LM need not know about the lock type graph, the lock instance graph, the MGL protocol, or implicit locks. Its only new feature is that it handIes more lock types (namely, intention locks) using the expanded compatibility matrix.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Q: TM会传递所有需要加锁的数据，x锁，父亲锁？</div><div class="line">   还是tm传递x锁，tm自动给父亲加锁？ 好像是第一种；</div></pre></td></tr></table></figure>
+</li>
+<li><p>锁转换</p>
+</li>
+</ol>
+<ul>
+<li>锁的强度<br>To simplify this lock conversion activ- ity, it is helpful to define the strength of lock types: lock type p is stronger than lock type 4 if for every lock type o, oli[x] conflicts with ql,[x] implies that ol,[x] conflicts with p&amp;[x]. </li>
+<li>锁转换(lock conversion table)<br>If a transaction owns p&amp;[x] and requests ql,[x], then the LM should convert pl,[x] into a lock type that is at least as strong as both p and q, </li>
+</ul>
+</li>
+<li>Lock Escalation<br> 问题：<br> A system that employs MGL must decide the level of granularity at which a given transaction should be locking data items.<br> 解决：Escalation<br> In this case, transactions start locking items of fine granularity (e.g., records). If a transaction obtains more than a certain number of locks of a given granularity, then the scheduler starts requesting locks at the next higher level of granularity (e.g., files), that is, it escalates the granularity of the locks it requests. The scheduler may escalate the granularity of a trans- action’s lock requests more than once.<br> 死锁的问题依然会存在：<br> In some applications, lock escalations have a high probability of leading to lock conversions that cause deadlocks.<br> 应对：<br> Instead, if a transaction gets too many fine granularity locks, it should be aborted and restarted, setting coarser granularity locks in its second incarnation. </li>
+<li>Generalized Locking Graph：dag Directed Acyclic Graph有向无环图<br> 原来的lock type graph是tree的类型；<br> 如果使用index，可以推广为Directed Acyclic Graph；<br> For a given lock instance graph G that is a dag, the scheduler sets and releases locks for each transaction Ti as follows:<ol>
+<li>If x is not the root of G, then to set rl;[x] or irli[x], Ti must have an ir or iw lock on some parent of X.</li>
+<li>If x is not the root of G, then to set w&amp;[x] or iwli[x], Ti must have an iw lock on all of x’s parents.</li>
+<li>To read x, Ti must own an r or w lock on some ancestor of x. To write x, Ti must own, for every path from the root of Gto x, aw lock for some ancestor of x along that path (i.e., it may own different locks for different paths). A lock on x itself is an explicit lock for X; locks on proper ancestors of x are implicit locks for X.</li>
+<li>A transaction may not release an intention lock on a data item x if it is currently holding a lock on any child of x.<pre><code>应该读一本数据库内核方面的书，了解具体的实现，现在只是概念上的了解，有些困惑需要实际的实现来解决；
+</code></pre></li>
+</ol>
+</li>
+</ol>
+
+    
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记.html"
+           data-title="Concurrency Control and Recovery in Database Systems 学习笔记" data-url="http://zhoumeng.xyz/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记.html">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="梦工厂" />
+          <p class="site-author-name" itemprop="name">梦工厂</p>
+           
+              <p class="site-description motion-element" itemprop="description">A goal is a dream with a deadline!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3063931872" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/6e7c82da2a5e" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-chain"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">梦工厂</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zm2014wangyi"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
