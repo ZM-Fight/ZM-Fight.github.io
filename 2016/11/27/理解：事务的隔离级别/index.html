@@ -87,28 +87,31 @@
 
 
 
-<meta name="description" content="一、数据库事务的ACID属性
-原子性：事务的所有操作要么全部执行，要么全部不执行；
-一致性：事务作为原子从一个一致的数据库状态开始独立的运行，则事务结束时事务也必须再次是一致的；
-隔离性：多个事务可能并发执行，但是系统保证，对于任意一对事务T1,T2，在T1看来，T2或者在T1开始之前已经完成执行，或者在T1完成之后开始执行。因此，每个事务都感觉不到系统中有其他事务在并发的执行。
-持久性：一个事务">
+<meta name="description" content="一、数据库事务的ACID属性 
+二、事务的隔离级别 
+三、读写异常 
+四、事务隔离级别与读写异常的关系 
+五、MYSQL实践演示 
+六、MYSQL隔离级别与实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解：事务的隔离级别">
 <meta property="og:url" content="http://zhoumeng.xyz/2016/11/27/理解：事务的隔离级别/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
-<meta property="og:description" content="一、数据库事务的ACID属性
-原子性：事务的所有操作要么全部执行，要么全部不执行；
-一致性：事务作为原子从一个一致的数据库状态开始独立的运行，则事务结束时事务也必须再次是一致的；
-隔离性：多个事务可能并发执行，但是系统保证，对于任意一对事务T1,T2，在T1看来，T2或者在T1开始之前已经完成执行，或者在T1完成之后开始执行。因此，每个事务都感觉不到系统中有其他事务在并发的执行。
-持久性：一个事务">
-<meta property="og:updated_time" content="2016-12-07T15:39:54.000Z">
+<meta property="og:description" content="一、数据库事务的ACID属性 
+二、事务的隔离级别 
+三、读写异常 
+四、事务隔离级别与读写异常的关系 
+五、MYSQL实践演示 
+六、MYSQL隔离级别与实现">
+<meta property="og:updated_time" content="2017-03-03T05:23:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解：事务的隔离级别">
-<meta name="twitter:description" content="一、数据库事务的ACID属性
-原子性：事务的所有操作要么全部执行，要么全部不执行；
-一致性：事务作为原子从一个一致的数据库状态开始独立的运行，则事务结束时事务也必须再次是一致的；
-隔离性：多个事务可能并发执行，但是系统保证，对于任意一对事务T1,T2，在T1看来，T2或者在T1开始之前已经完成执行，或者在T1完成之后开始执行。因此，每个事务都感觉不到系统中有其他事务在并发的执行。
-持久性：一个事务">
+<meta name="twitter:description" content="一、数据库事务的ACID属性 
+二、事务的隔离级别 
+三、读写异常 
+四、事务隔离级别与读写异常的关系 
+五、MYSQL实践演示 
+六、MYSQL隔离级别与实现">
 
 
 
@@ -375,7 +378,17 @@
       
 
       
-        <h4 id="一、数据库事务的ACID属性"><a href="#一、数据库事务的ACID属性" class="headerlink" title="一、数据库事务的ACID属性"></a>一、数据库事务的ACID属性</h4><ul>
+        <ul>
+<li>一、数据库事务的ACID属性 </li>
+<li>二、事务的隔离级别 </li>
+<li>三、读写异常 </li>
+<li>四、事务隔离级别与读写异常的关系 </li>
+<li>五、MYSQL实践演示 </li>
+<li>六、MYSQL隔离级别与实现<a id="more"></a>
+</li>
+</ul>
+<hr>
+<h4 id="一、数据库事务的ACID属性"><a href="#一、数据库事务的ACID属性" class="headerlink" title="一、数据库事务的ACID属性"></a>一、数据库事务的ACID属性</h4><ul>
 <li>原子性：事务的所有操作要么全部执行，要么全部不执行；</li>
 <li>一致性：事务作为原子从一个一致的数据库状态开始独立的运行，则事务结束时事务也必须再次是一致的；</li>
 <li>隔离性：多个事务可能并发执行，但是系统保证，对于任意一对事务T1,T2，在T1看来，T2或者在T1开始之前已经完成执行，或者在T1完成之后开始执行。因此，每个事务都感觉不到系统中有其他事务在并发的执行。</li>
@@ -519,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="../../28/论文阅读笔记 - Spanner/" rel="prev" title="论文阅读笔记 ： Spanner">
-                论文阅读笔记 ： Spanner <i class="fa fa-chevron-right"></i>
+              <a href="../../../../2017/02/26/Machine-Learning/" rel="prev" title="Machine Learning">
+                Machine Learning <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -616,7 +629,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="../../../../archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -625,7 +638,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="../../../../categories/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -634,7 +647,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="../../../../tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

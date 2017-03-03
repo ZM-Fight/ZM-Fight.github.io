@@ -32,7 +32,7 @@
 
   
   
-  <link href="lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="../../../../lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -66,37 +66,37 @@
 
 
 
-<link href="lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="../../../../lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, 梦工厂" />
+<link href="../../../../css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
+  <meta name="keywords" content="Concurrency Control," />
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=5.1.0" />
 
 
 
 
 
 
-<meta name="description" content="Concurrency Control and Recovery in Database Systems 学习笔记">
-<meta property="og:type" content="website">
+<meta name="description" content="学习笔记：Basic two phase locking">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Concurrency Control and Recovery in Database Systems 学习笔记">
-<meta property="og:url" content="http://zhoumeng.xyz/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记.html">
+<meta property="og:url" content="http://zhoumeng.xyz/2017/02/28/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
-<meta property="og:description" content="Concurrency Control and Recovery in Database Systems 学习笔记">
-<meta property="og:updated_time" content="2017-02-28T16:09:52.000Z">
+<meta property="og:description" content="学习笔记：Basic two phase locking">
+<meta property="og:updated_time" content="2017-03-03T03:32:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Concurrency Control and Recovery in Database Systems 学习笔记">
-<meta name="twitter:description" content="Concurrency Control and Recovery in Database Systems 学习笔记">
+<meta name="twitter:description" content="学习笔记：Basic two phase locking">
 
 
 
@@ -124,19 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://zhoumeng.xyz/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记.html"/>
+  <link rel="canonical" href="http://zhoumeng.xyz/2017/02/28/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    Concurrency Control and Recovery in Database Systems 学习笔记 | 梦工厂's blog
-  
-</title>
+  <title> Concurrency Control and Recovery in Database Systems 学习笔记 | 梦工厂's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -161,7 +155,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,21 +250,124 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">Concurrency Control and Recovery in Database Systems 学习笔记</h1>
+  
 
+  
+  
+  
 
-	<div class="post-meta">
-		<div class="post-description">Concurrency Control and Recovery in Database Systems 学习笔记</div>
-	</div>
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhoumeng.xyz">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="梦工厂">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="../../../../images/avatar.png">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="梦工厂's blog">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Concurrency Control and Recovery in Database Systems 学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-28T16:49:39+08:00">
+                2017-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="../../../../categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/28/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  学习笔记：Basic two phase locking
+              </div>
+          
+
+        </div>
+      </header>
     
-      <h3 id="chapter3"><a href="#chapter3" class="headerlink" title="chapter3"></a>chapter3</h3><h4 id="3-2-Basic-two-phase-locking"><a href="#3-2-Basic-two-phase-locking" class="headerlink" title="3.2 Basic two phase locking"></a>3.2 Basic two phase locking</h4><ol>
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="chapter3"><a href="#chapter3" class="headerlink" title="chapter3"></a>chapter3</h3><h4 id="3-2-Basic-two-phase-locking"><a href="#3-2-Basic-two-phase-locking" class="headerlink" title="3.2 Basic two phase locking"></a>3.2 Basic two phase locking</h4><ol>
 <li>一些概念<ul>
 <li>锁的直观概念</li>
 <li>锁的类型，读写锁，加解锁；</li>
@@ -432,8 +529,122 @@
 </ol>
 </li>
 </ol>
+<h4 id="3-10-DlSTRlBUTED-TWO-PHASE-LOCKlNG"><a href="#3-10-DlSTRlBUTED-TWO-PHASE-LOCKlNG" class="headerlink" title="3.10 DlSTRlBUTED TWO PHASE LOCKlNG"></a>3.10 DlSTRlBUTED TWO PHASE LOCKlNG</h4><ol>
+<li>分布式事务流程：<br> A transaction submits its operations to a TM. The TM then delivers each Read(x) or Write(x) operation of that transaction to the scheduler that manages 3~.When (and if) a scheduler decides to process the Read(x) or Write(x), it sends the operation to its local DM, which can accessx and return its value (for a Read) or update it (for a Write). The Commit or Abort opera- tion is sent to all sites where the transaction accessed data items.</li>
+<li>目标：<br> The schedulers at all sites, taken together, constitute a distributed sched- uler. The task of the distributed scheduler is to process the operations submit- ted by the TMs in a (globally) serializable and recoverable manner.</li>
+<li>基于2pl的分布式调度器：<ol>
+<li>小问题：<br> To enforce the two phase rule, a scheduler cannot release a transaction Tl’s lock until it knows that T, wiI1 not submit any more operations to it OY any other scheduler. </li>
+<li>解决：Strict 2PL</li>
+<li>关键问题：<br> 关于原子性提交问题：chapter7</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-11-DISTRMJTED-DEADLOCK"><a href="#3-11-DISTRMJTED-DEADLOCK" class="headerlink" title="3.11 DISTRMJTED DEADLOCK"></a>3.11 DISTRMJTED DEADLOCK</h4><ol>
+<li><p>分布式死锁的示例 🌰</p>
+</li>
+<li><p>解决方法：</p>
+<ol>
+<li><p>global deadlock detection</p>
+<ul>
+<li>原理：<br>  A simple way to do this is for each scheduler to send changes to its WFG, to a special process, the global deadlock detector. The global deadlock detector keeps the latest copy of the local WFG that it has received from each scheduler. It periodically takes the union of these local WFGs to produce a global WFG, and checks it for cycles.</li>
+<li>问题：周期性检测，分布式下delay会严重；</li>
+<li>牺牲者的选择需要额外的信息：piggybacking减少消息开销<br>  Since communication cost is generally a function of the number of messages exchanged (as well as the amount of information), reducing the number of messages in this way can significantly reduce communication cost.<br>  <code>q: 消息开销与消息个数，消息长度的关系？</code></li>
+</ul>
+</li>
+<li><p>Path pushing<br> <code>不太明</code></p>
+</li>
+<li>imestamp-based Deadlock Prevention</li>
+</ol>
+</li>
+<li><p>Comparing Deadlock Management Techniques</p>
+<p> Each approach to deadIock management has its proponents. Many centralized DBSs, such as IBM’s DB2 and RTI’s INGRES, use WFG cycle detection. Each of the distributed techniques we have described is implemented in a commer- cial product, and each putatively works well: Tandem uses timeout; Distrib- uted INGRES uses centralized deadlock detection; IBM’s System R* prototype uses path pushing; and GE’s MADMAN uses timestamp-based prevention.</p>
+</li>
+</ol>
+<h4 id="3-12-LOCKING-PERFORMANCE"><a href="#3-12-LOCKING-PERFORMANCE" class="headerlink" title="3.12 LOCKING PERFORMANCE"></a>3.12 LOCKING PERFORMANCE</h4><p><code>没细看</code></p>
+<h4 id="3-13-TREE-LOCKING"><a href="#3-13-TREE-LOCKING" class="headerlink" title="3.13 TREE LOCKING"></a>3.13 TREE LOCKING</h4><p><code>没细看</code></p>
 
-    
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="../../../../tags/Concurrency-Control/" rel="tag"># Concurrency Control</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="../Cousera-Machine-Learning-学习笔记2/" rel="next" title="Cousera Machine Learning 学习笔记2">
+                <i class="fa fa-chevron-left"></i> Cousera Machine Learning 学习笔记2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="../../../03/01/阅读：技术文章/" rel="prev" title="阅读：技术文章">
+                阅读：技术文章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/02/28/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记/"
+     data-title="Concurrency Control and Recovery in Database Systems 学习笔记"
+     data-content=""
+     data-url="http://zhoumeng.xyz/2017/02/28/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
   </div>
 
           
@@ -444,8 +655,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记.html"
-           data-title="Concurrency Control and Recovery in Database Systems 学习笔记" data-url="http://zhoumeng.xyz/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记.html">
+      <div class="ds-thread" data-thread-key="2017/02/28/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记/"
+           data-title="Concurrency Control and Recovery in Database Systems 学习笔记" data-url="http://zhoumeng.xyz/2017/02/28/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记/">
       </div>
     
   </div>
@@ -469,11 +680,20 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
+               src="../../../../images/avatar.png"
                alt="梦工厂" />
           <p class="site-author-name" itemprop="name">梦工厂</p>
            
@@ -484,8 +704,8 @@
         
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">19</span>
+              <a href="../../../../archives">
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -493,8 +713,8 @@
 
           
             <div class="site-state-item site-state-categories">
-              <a href="/categories/">
-                <span class="site-state-item-count">7</span>
+              <a href="../../../../categories/">
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -502,8 +722,8 @@
 
           
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">8</span>
+              <a href="../../../../tags">
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -548,6 +768,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#chapter3"><span class="nav-number">1.</span> <span class="nav-text">chapter3</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Basic-two-phase-locking"><span class="nav-number">1.1.</span> <span class="nav-text">3.2 Basic two phase locking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-CORRECTNESS-OF-BASIC-TWO-PHASE-LOCKING"><span class="nav-number">1.2.</span> <span class="nav-text">3.3 CORRECTNESS OF BASIC TWO PHASE LOCKING</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-DEADLOCKS-既然2pl是正确的，那么就来解决它的问题"><span class="nav-number">1.3.</span> <span class="nav-text">3.4 DEADLOCKS (既然2pl是正确的，那么就来解决它的问题)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TimeOut"><span class="nav-number">1.3.1.</span> <span class="nav-text">TimeOut</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#WFG-wait-for-graph"><span class="nav-number">1.3.2.</span> <span class="nav-text">WFG(wait-for-graph)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-VARIATIONS-OF-TWO-PHASE-LOCKING-变体"><span class="nav-number">1.4.</span> <span class="nav-text">3.5 VARIATIONS OF TWO PHASE LOCKING 变体</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Conservative-2PL-保守"><span class="nav-number">1.4.1.</span> <span class="nav-text">Conservative 2PL 保守</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Strict-2PL"><span class="nav-number">1.4.2.</span> <span class="nav-text">Strict 2PL</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-IMPLEMENTATION-ISSUES"><span class="nav-number">1.5.</span> <span class="nav-text">3.6 IMPLEMENTATION ISSUES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-THE-PHANTOM-PROBLEM"><span class="nav-number">1.6.</span> <span class="nav-text">3.7 THE PHANTOM PROBLEM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-LOCKING-ADDlTlONAL-OPERATiONS-扩充操作类型"><span class="nav-number">1.7.</span> <span class="nav-text">3.8 LOCKING ADDlTlONAL OPERATiONS (扩充操作类型)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-MULTIGRANULARITY-LQCKlNG"><span class="nav-number">1.8.</span> <span class="nav-text">3.9 MULTIGRANULARITY LQCKlNG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-10-DlSTRlBUTED-TWO-PHASE-LOCKlNG"><span class="nav-number">1.9.</span> <span class="nav-text">3.10 DlSTRlBUTED TWO PHASE LOCKlNG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-11-DISTRMJTED-DEADLOCK"><span class="nav-number">1.10.</span> <span class="nav-text">3.11 DISTRMJTED DEADLOCK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-12-LOCKING-PERFORMANCE"><span class="nav-number">1.11.</span> <span class="nav-text">3.12 LOCKING PERFORMANCE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-13-TREE-LOCKING"><span class="nav-number">1.12.</span> <span class="nav-text">3.13 TREE LOCKING</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -611,49 +847,53 @@
 
 
   
-  <script type="text/javascript" src="lib/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="../../../../lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script type="text/javascript" src="lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="../../../../lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  <script type="text/javascript" src="lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="../../../../lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  <script type="text/javascript" src="lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="js/src/schemes/pisces.js?v=5.1.0"></script>
-
+  <script type="text/javascript" src="../../../../lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
+
+  <script type="text/javascript" src="../../../../js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="../../../../js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
   
 
 
-  <script type="text/javascript" src="js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="../../../../js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="../../../../js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="../../../../js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="../../../../js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -679,12 +919,12 @@
   
     
       
-      <script src="lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-      <script src="js/src/hook-duoshuo.js?v=5.1.0"></script>
+      <script src="../../../../lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="../../../../js/src/hook-duoshuo.js?v=5.1.0"></script>
     
     
-    <script src="lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="js/src/hook-duoshuo.js"></script>
+    <script src="../../../../lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="../../../../js/src/hook-duoshuo.js"></script>
   
 
 

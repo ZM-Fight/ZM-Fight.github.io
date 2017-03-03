@@ -87,25 +87,34 @@
 
 
 
-<meta name="description" content="Bitcask是一个日志型的基于哈希表结构的键值存储引擎，它仅支持追加操作（Append-only），即所有的操作只追加而不修改老的数据。
-Bitcask存储模型介绍日志型的数据文件在Bitcask系统中，每个文件都有一定的大小限制，当文件增加到相应的大小时，就会产生一个新的文件，老的文件只读不写。在任意时刻，只有一个文件是可写的，用于数据追加，称为活跃数据文件（active data file）">
+<meta name="description" content="Bitcask存储模型介绍
+功能介绍
+应用
+代码实现
+参考资料">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读笔记 ： Bitcask">
 <meta property="og:url" content="http://zhoumeng.xyz/2016/11/10/Bitcask/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
-<meta property="og:description" content="Bitcask是一个日志型的基于哈希表结构的键值存储引擎，它仅支持追加操作（Append-only），即所有的操作只追加而不修改老的数据。
-Bitcask存储模型介绍日志型的数据文件在Bitcask系统中，每个文件都有一定的大小限制，当文件增加到相应的大小时，就会产生一个新的文件，老的文件只读不写。在任意时刻，只有一个文件是可写的，用于数据追加，称为活跃数据文件（active data file）">
+<meta property="og:description" content="Bitcask存储模型介绍
+功能介绍
+应用
+代码实现
+参考资料">
 <meta property="og:image" content="https://github.com/basho/bitcask/blob/develop/doc/bitcask_silo.png?raw=true">
 <meta property="og:image" content="https://github.com/basho/bitcask/blob/develop/doc/file_entry_text.png?raw=true">
 <meta property="og:image" content="https://github.com/basho/bitcask/blob/develop/doc/data_file.png?raw=true">
 <meta property="og:image" content="https://github.com/basho/bitcask/blob/develop/doc/keydir.png?raw=true">
 <meta property="og:image" content="https://github.com/basho/bitcask/blob/develop/doc/read_path.png?raw=true">
 <meta property="og:image" content="https://github.com/basho/bitcask/blob/develop/doc/merge_silo.png?raw=true">
-<meta property="og:updated_time" content="2016-11-12T18:37:54.000Z">
+<meta property="og:updated_time" content="2017-03-03T05:12:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读笔记 ： Bitcask">
-<meta name="twitter:description" content="Bitcask是一个日志型的基于哈希表结构的键值存储引擎，它仅支持追加操作（Append-only），即所有的操作只追加而不修改老的数据。
-Bitcask存储模型介绍日志型的数据文件在Bitcask系统中，每个文件都有一定的大小限制，当文件增加到相应的大小时，就会产生一个新的文件，老的文件只读不写。在任意时刻，只有一个文件是可写的，用于数据追加，称为活跃数据文件（active data file）">
+<meta name="twitter:description" content="Bitcask存储模型介绍
+功能介绍
+应用
+代码实现
+参考资料">
 <meta name="twitter:image" content="https://github.com/basho/bitcask/blob/develop/doc/bitcask_silo.png?raw=true">
 
 
@@ -373,7 +382,16 @@ Bitcask存储模型介绍日志型的数据文件在Bitcask系统中，每个文
       
 
       
-        <p>Bitcask是一个日志型的基于哈希表结构的键值存储引擎，它仅支持追加操作（Append-only），即所有的操作只追加而不修改老的数据。</p>
+        <ul>
+<li>Bitcask存储模型介绍</li>
+<li>功能介绍</li>
+<li>应用</li>
+<li>代码实现</li>
+<li>参考资料</li>
+</ul>
+<a id="more"></a>
+<hr>
+<p>Bitcask是一个日志型的基于哈希表结构的键值存储引擎，它仅支持追加操作（Append-only），即所有的操作只追加而不修改老的数据。</p>
 <h3 id="Bitcask存储模型介绍"><a href="#Bitcask存储模型介绍" class="headerlink" title="Bitcask存储模型介绍"></a>Bitcask存储模型介绍</h3><h4 id="日志型的数据文件"><a href="#日志型的数据文件" class="headerlink" title="日志型的数据文件"></a>日志型的数据文件</h4><p>在Bitcask系统中，每个文件都有一定的大小限制，当文件增加到相应的大小时，就会产生一个新的文件，老的文件只读不写。<br>在任意时刻，只有一个文件是可写的，用于数据追加，称为活跃数据文件（active data file）；<br>而其他已经达到大小限制的文件，称为老数据文件（older data file）。<br><img src="https://github.com/basho/bitcask/blob/develop/doc/bitcask_silo.png?raw=true" alt=""><br><code>活跃数据文件只读不写，这样可以将随机写转为顺序写，省去了磁盘寻道时间。</code></p>
 <p>每个文件中的数据结构非常简单，是一条一条的数据写入操作，每一条数据的结构如下：<br><img src="https://github.com/basho/bitcask/blob/develop/doc/file_entry_text.png?raw=true" alt=""><br>每一条记录的数据项分别为主键（key），内容（value），主键长度（ksz），value长度（value_sz)，时间戳（tstamp），以及对前面几项做的crc校验值。<br>Bitcask的数据文件就是这样一条条的数据组成。<br><img src="https://github.com/basho/bitcask/blob/develop/doc/data_file.png?raw=true" alt=""></p>
 <h4 id="索引哈希表"><a href="#索引哈希表" class="headerlink" title="索引哈希表"></a>索引哈希表</h4><p>在Bitcask模型中，除了存储在磁盘上的数据文件，还有另外一块数据，那就是存储在内存中的hash表，hash表的作用是通过key值快速的定位到value的位置。hash表的结构大致如下图所示：<br><img src="https://github.com/basho/bitcask/blob/develop/doc/keydir.png?raw=true" alt=""><br>哈希表结构中的每一项包括了三个用于定位数据value的信息，分别是：<br>文件id号(file_id)，value值在文件中的位置（value_pos）,value值的大小（value_sz）。<br><strong>通过读取file_id对应文件的value_pos开始的value_sz个字节，就得到了最终需要的value值。</strong></p>
@@ -542,7 +560,7 @@ Bitcask存储模型介绍日志型的数据文件在Bitcask系统中，每个文
           
             <div class="site-state-item site-state-posts">
               <a href="../../../../archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -551,7 +569,7 @@ Bitcask存储模型介绍日志型的数据文件在Bitcask系统中，每个文
           
             <div class="site-state-item site-state-categories">
               <a href="../../../../categories/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -560,7 +578,7 @@ Bitcask存储模型介绍日志型的数据文件在Bitcask系统中，每个文
           
             <div class="site-state-item site-state-tags">
               <a href="../../../../tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
