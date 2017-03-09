@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://zhoumeng.xyz/更新锁.png">
 <meta property="og:image" content="http://zhoumeng.xyz/10.png">
 <meta property="og:image" content="http://zhoumeng.xyz/11.png">
-<meta property="og:updated_time" content="2017-03-09T18:28:38.000Z">
+<meta property="og:updated_time" content="2017-03-09T18:36:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务与分布式事务原理与实现_沈询 ：学习笔记1">
 <meta name="twitter:description" content="学习笔记：事务与分布式事务原理与实现_沈询">
@@ -413,11 +413,9 @@
 <li><p>死锁产生原因：两个线程｜不同方向｜相同资源</p>
 </li>
 <li><p>死锁的解决方案：</p>
-<ul>
-<li>尽可能不死锁：降低隔离级别，一般不常用；</li>
-<li>碰撞检测：效率高，终止一边；</li>
-<li>等锁超时：效率低，长事务不适合；</li>
-</ul>
+<p>（1）尽可能不死锁：降低隔离级别，一般不常用；</p>
+<p>（2）碰撞检测：效率高，终止一边；</p>
+<p>（3）等锁超时：效率低，长事务不适合；</p>
 <blockquote>
 <p>主流数据库主要使用碰撞检测，辅以等锁超时；</p>
 </blockquote>
@@ -442,41 +440,29 @@
 </blockquote>
 <ul>
 <li><p>序列化读写（Serializable）</p>
-<ul>
-<li><p>排他锁 ：对于冲突资源只能一个一个的访问，多个事务串行执行</p>
+<p>排他锁 ：对于冲突资源只能一个一个的访问，多个事务串行执行</p>
 <p><img src="3.png" alt=""></p>
 <blockquote>
 <p>性能差～不可用</p>
 </blockquote>
 </li>
-</ul>
-</li>
 <li><p>可重复读（Repeatable）</p>
-<ul>
-<li><p>读写锁：读锁不能被写锁升级</p>
-<p>（1）读读并行    </p>
+<p>读写锁：读锁不能被写锁升级</p>
+<p>读读并行    </p>
 <p><img src="4.png" alt=""></p>
 </li>
-</ul>
-</li>
 <li><p>读已提交（Read Committed）</p>
-<ul>
-<li><p>读写锁：读锁能被写锁升级</p>
+<p>读写锁：读锁能被写锁升级</p>
 <p>（1）读读并行    </p>
 <p>（2）读写并行</p>
 <p><img src="5.png" alt=""></p>
 </li>
-</ul>
-</li>
 <li><p>读未提交（Read Uncommitted）</p>
-<ul>
-<li><p>只加写锁，读不加锁</p>
+<p>只加写锁，读不加锁</p>
 <p>（1）读读并行    </p>
 <p>（2）读写并行</p>
 <p>（3）写读并行</p>
 <p><img src="6.png" alt=""></p>
-</li>
-</ul>
 </li>
 </ul>
 <blockquote>
@@ -484,13 +470,9 @@
 </blockquote>
 <ul>
 <li><p>快照读（Snapshot Isolation）</p>
-<ul>
-<li><p>针对读多写少场景优化</p>
-</li>
-<li><p>并行度能达到或超过读未提交，而隔离级别很高；</p>
+<p>（1）针对读多写少场景优化</p>
+<p>（2）并行度能达到或超过读未提交，而隔离级别很高；</p>
 <p><img src="6.png" alt=""></p>
-</li>
-</ul>
 </li>
 </ul>
 </li>
@@ -554,27 +536,19 @@
 </ul>
 <h5 id="MVCC拾遗"><a href="#MVCC拾遗" class="headerlink" title="MVCC拾遗"></a>MVCC拾遗</h5><ul>
 <li><p>快照读（Snapshot Isolation）</p>
-<ul>
-<li>针对读多写少场景优化</li>
-<li>并行度能达到或超过读未提交，而隔离级别很高；</li>
-</ul>
+<p>（1）针对读多写少场景优化</p>
+<p>（2）并行度能达到或超过读未提交，而隔离级别很高；</p>
 </li>
 <li><p>写和写，有没有可能并行？</p>
-<ul>
-<li><p>假设写写并行：bob给smith转账，同时smith给bob转账；</p>
+<p>（1）假设写写并行：bob给smith转账，同时smith给bob转账；</p>
 <p><img src="10.png" alt=""></p>
-</li>
-<li><p>方案一：加锁</p>
-</li>
-<li><p>方案二：乐观锁并发，让版本低的并发更新回滚</p>
-<p>优势：并发低时性能好</p>
-<p>代价：并发高时失败率高，需要不断重试</p>
+<p>（2）方案一：加锁</p>
+<p>（3）方案二：乐观锁并发，让版本低的并发更新回滚。     优势：并发低时性能好；     代价：并发高时失败率高，需要不断重试；</p>
 <p><img src="11.png" alt=""></p>
 <p>​</p>
 </li>
 </ul>
-</li>
-</ul>
+<hr>
 
       
     </div>
