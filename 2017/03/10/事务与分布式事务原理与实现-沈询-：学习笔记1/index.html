@@ -71,7 +71,7 @@
 <link href="../../../../css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="总结," />
+  <meta name="keywords" content="事务," />
 
 
 
@@ -87,16 +87,29 @@
 
 
 
-<meta name="description" content="每天阅读的技术文章学习汇总">
+<meta name="description" content="学习笔记：事务与分布式事务原理与实现_沈询">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阅读：技术文章">
-<meta property="og:url" content="http://zhoumeng.xyz/2017/03/01/阅读：技术文章/index.html">
+<meta property="og:title" content="事务与分布式事务原理与实现_沈询 ：学习笔记1">
+<meta property="og:url" content="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记1/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
-<meta property="og:description" content="每天阅读的技术文章学习汇总">
-<meta property="og:updated_time" content="2017-03-08T10:41:50.000Z">
+<meta property="og:description" content="学习笔记：事务与分布式事务原理与实现_沈询">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/1.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/2.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/3.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/4.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/5.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/6.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/6.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/7.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/8.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/更新锁.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/10.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/11.png">
+<meta property="og:updated_time" content="2017-03-09T18:21:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阅读：技术文章">
-<meta name="twitter:description" content="每天阅读的技术文章学习汇总">
+<meta name="twitter:title" content="事务与分布式事务原理与实现_沈询 ：学习笔记1">
+<meta name="twitter:description" content="学习笔记：事务与分布式事务原理与实现_沈询">
+<meta name="twitter:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/1.png">
 
 
 
@@ -124,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://zhoumeng.xyz/2017/03/01/阅读：技术文章/"/>
+  <link rel="canonical" href="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记1/"/>
 
 
 
 
 
-  <title> 阅读：技术文章 | 梦工厂's blog </title>
+  <title> 事务与分布式事务原理与实现_沈询 ：学习笔记1 | 梦工厂's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -280,7 +293,7 @@
             
             
               
-                阅读：技术文章
+                事务与分布式事务原理与实现_沈询 ：学习笔记1
               
             
           </h1>
@@ -295,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-01T21:39:35+08:00">
-                2017-03-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-10T02:06:04+08:00">
+                2017-03-10
               </time>
             
 
@@ -318,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="../../../../categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="../../../../categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -337,7 +350,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/01/阅读：技术文章/" itemprop="commentCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,7 +365,7 @@
 
           
               <div class="post-description">
-                  每天阅读的技术文章学习汇总
+                  学习笔记：事务与分布式事务原理与实现_沈询
               </div>
           
 
@@ -367,53 +380,200 @@
       
 
       
-        <p>####2017.3.8</p>
+        <h4 id="一、单机事务"><a href="#一、单机事务" class="headerlink" title="一、单机事务"></a>一、单机事务</h4><h5 id="事务简介"><a href="#事务简介" class="headerlink" title="事务简介"></a>事务简介</h5><ol>
+<li><p>一个事务单元</p>
+</li>
+<li><p>一组事务单元     （目标：快｜并发＋正确性｜happen－before关系）</p>
 <ul>
-<li><p>分布式：<a href="http://blog.csdn.net/cywosp/article/details/23397179" target="_blank" rel="external">五分钟理解一致性哈希算法(consistent hashing)</a></p>
-<p>hash环空间处理节点的添加和删除＋虚拟节点处理平衡问题</p>
+<li>排队</li>
+<li>排他锁 🔒：针对同一个单元的访问进行访问控制 </li>
+<li>读写锁 🔒：针对读读场景做优化 （针对读写做优化，读不加锁，不可重复读）</li>
+<li>MVCC：针对写读场景做优化 （主流实现，代价：系统复杂度增加）</li>
+</ul>
+<blockquote>
+<p> 读读、读写、写读场景都可以做到不冲突，只有写写会冲突；</p>
+</blockquote>
 </li>
-<li><p>收藏：<a href="http://blog.csdn.net/hguisu/article/details/7408047" target="_blank" rel="external">硬盘的读写原理</a></p>
-<p>（1）数据写由上而下，由外而内。</p>
-<p>（2）不同磁道的扇区数不同，因此外磁道读写速度很快；<a href="http://rgwyz.com/2/2shang/21/index.php" target="_blank" rel="external">link</a></p>
-<p>（3）在磁盘没进行读写操作时，磁头始终是在停靠区的；<a href="https://www.zhihu.com/question/21043614/answer/16987681" target="_blank" rel="external">link</a></p>
+</ol>
+<h5 id="事务处理的常见问题"><a href="#事务处理的常见问题" class="headerlink" title="事务处理的常见问题"></a>事务处理的常见问题</h5><ol>
+<li><p>多个事务，谁先谁后</p>
+<ul>
+<li>MVCC 一个读请求应该读哪一个写之后的数据；</li>
+<li>实现方式：逻辑时间戳 （比如Innodb的Trx_id）；</li>
+</ul>
 </li>
-<li><p>分布式事务：<a href="http://www.bo56.com/%E5%A4%A7%E7%99%BD%E8%AF%9D%E8%81%8A%E8%81%8A%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" target="_blank" rel="external">大白话聊聊分布式事务</a></p>
-<p>实现方式介绍：两阶段提交＋消息中间件</p>
+<li><p>故障恢复</p>
+<ul>
+<li>业务属性不匹配：业务逻辑错误，回滚事务；</li>
+<li>系统崩溃：回滚事务；</li>
+</ul>
+</li>
+<li><p>死锁与死锁检测</p>
+<ul>
+<li><p>死锁产生原因：两个线程｜不同方向｜相同资源</p>
+</li>
+<li><p>死锁的解决方案：</p>
+<ul>
+<li>尽可能不死锁：降低隔离级别，一般不常用；</li>
+<li>碰撞检测：效率高，终止一边；</li>
+<li>等锁超时：效率低，长事务不适合；</li>
+</ul>
+<blockquote>
+<p>主流数据库主要使用碰撞检测，辅以等锁超时；</p>
+</blockquote>
 </li>
 </ul>
-<h4 id="2017-3-4"><a href="#2017-3-4" class="headerlink" title="2017.3.4"></a>2017.3.4</h4><ul>
-<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5ODQ2MDIyMA==&amp;mid=208626005&amp;idx=1&amp;sn=988220b4763f73a7f2491568662aea7c" target="_blank" rel="external">每个人都该懂点缓存</a></p>
-<p>缓存普及</p>
+</li>
+</ol>
+<h4 id="二、深入单机事务"><a href="#二、深入单机事务" class="headerlink" title="二、深入单机事务"></a>二、深入单机事务</h4><h5 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h5><ol>
+<li><p>原子性</p>
+<p><img src="/Users/zhoumeng/Desktop/1.png" alt="1"></p>
+<p>原子性保证事务或者成功执行ver3，或者失败回滚ver1，不会处于中间状态；</p>
+<p>原子性不会关心ver2会不会被其他事务看到；</p>
+</li>
+<li><p>一致性</p>
+<p><img src="/Users/zhoumeng/Desktop/2.png" alt="屏幕快照 2017-03-09 下午8.33.58"></p>
+<p>一致性的保证在于处理视点3：将视点3上移到视点1或者下移到视点2，保证事务单元全部成功后才可见；</p>
+<p>一致性的核心在于保证事务的happen-before关系，因此导致问题并发度太低；</p>
+</li>
+<li><p>隔离性：以性能为理由，对强一致性的破坏</p>
+<blockquote>
+<p>（结合两阶段🔒来考虑隔离级别）</p>
+</blockquote>
+<ul>
+<li><p>序列化读写（Serializable）</p>
+<ul>
+<li><p>排他锁 ：对于冲突资源只能一个一个的访问，多个事务串行执行</p>
+<p><img src="/Users/zhoumeng/Desktop/3.png" alt="3"></p>
+<blockquote>
+<p>性能差～不可用</p>
+</blockquote>
 </li>
 </ul>
-<h4 id="2017-3-3"><a href="#2017-3-3" class="headerlink" title="2017.3.3"></a>2017.3.3</h4><ul>
-<li><a href="http://www.cnblogs.com/littleBit/p/5362806.html" target="_blank" rel="external">工具：Mac下如何用SSH连接远程Linux服务器</a></li>
-</ul>
-<h4 id="2017-3-1"><a href="#2017-3-1" class="headerlink" title="2017.3.1"></a>2017.3.1</h4><ul>
-<li><p><a href="http://oserror.com/backend/raid-principle/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">程序员需要知道的RAID基本原理</a></p>
-<p>(1) RAID的基本作用：数据冗余＋性能提升</p>
-<p>(2) RAID的分类及基本原理：RAID0、RAID1、RAID2、RAID3、RAID4、RAID5、RAID6；</p>
 </li>
-<li><p><a href="http://book.2cto.com/201301/13728.html" target="_blank" rel="external">海明纠错码 HammingCode</a></p>
-<p>(1) 海明码是一个可以有多个校验位，具有检测并纠正<strong>一位错误代码</strong>功能的纠错码，所以它也仅用于信道特性比较好的环境中，如以太局域网中，因为如果信道特性不好的情况下，出现的错误通常不是一位。</p>
-<p>(2) 海明纠错码的使用步骤：计算校验位数→确定校验码位置→确定校验码→实现校验和纠错；</p>
+<li><p>可重复读（Repeatable）</p>
+<ul>
+<li><p>读写锁：读锁不能被写锁升级</p>
+<p>（1）读读并行    </p>
+<p><img src="/Users/zhoumeng/Desktop/4.png" alt="4"></p>
 </li>
 </ul>
-<h4 id="2017-2-27"><a href="#2017-2-27" class="headerlink" title="2017.2.27"></a>2017.2.27</h4><ul>
-<li><p><a href="http://blog.jobbole.com/110354/" target="_blank" rel="external">也许，这样理解HTTPS更容易 - 文章 - 伯乐在线</a></p>
 </li>
-<li><p><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html" target="_blank" rel="external">数字签名是什么？ - 阮一峰的网络日志</a></p>
-<p>数字签名和数字证书（补充前文一个小问题）</p>
+<li><p>读已提交（Read Committed）</p>
+<ul>
+<li><p>读写锁：读锁能被写锁升级</p>
+<p>（1）读读并行    </p>
+<p>（2）读写并行</p>
+<p><img src="/Users/zhoumeng/Desktop/5.png" alt="5"></p>
 </li>
 </ul>
-<h4 id="2017-2-25"><a href="#2017-2-25" class="headerlink" title="2017.2.25"></a>2017.2.25</h4><ul>
-<li><a href="https://www.zhihu.com/question/56234281/answer/148349930#" target="_blank" rel="external">如何评价 2 月 23 日谷歌宣布实现了 SHA-1 碰撞？ - 知乎</a></li>
+</li>
+<li><p>读未提交（Read Uncommitted）</p>
+<ul>
+<li><p>只加写锁，读不加锁</p>
+<p>（1）读读并行    </p>
+<p>（2）读写并行</p>
+<p>（3）写读并行</p>
+<p><img src="/Users/zhoumeng/Desktop/6.png" alt="6"></p>
+</li>
 </ul>
-<h4 id="2017-2-24"><a href="#2017-2-24" class="headerlink" title="2017.2.24"></a>2017.2.24</h4><ul>
-<li><a href="http://blog.jobbole.com/110310/" target="_blank" rel="external">硬盘写到一半时断电，文件系统里会发什么？ - 文章 - 伯乐在线</a></li>
+</li>
 </ul>
-<h4 id="2017-2-23"><a href="#2017-2-23" class="headerlink" title="2017.2.23"></a>2017.2.23</h4><ul>
-<li><a href="http://blog.jobbole.com/109987/" target="_blank" rel="external">看过这两张图，就明白 Buffer 和 Cache 之间区别</a></li>
+<blockquote>
+<p>隔离性扩展</p>
+</blockquote>
+<ul>
+<li><p>快照读（Snapshot Isolation）</p>
+<ul>
+<li><p>针对读多写少场景优化</p>
+</li>
+<li><p>并行度能达到或超过读未提交，而隔离级别很高；</p>
+<p><img src="/Users/zhoumeng/Desktop/6.png" alt="6"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>持久性：事务完成后，事务对数据库的更改持久的保存在数据库之中。</p>
+<ul>
+<li><p>丢数据原因1：数据在内存中，未写入磁盘</p>
+<p>group commit , IOPS与吞吐量的权衡</p>
+</li>
+<li><p>丢数据原因2：磁盘的物理损坏</p>
+<p> RAID</p>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="单机事务的典型异常应对策略"><a href="#单机事务的典型异常应对策略" class="headerlink" title="单机事务的典型异常应对策略"></a>单机事务的典型异常应对策略</h5><ol>
+<li><p>业务属性不匹配：回滚。</p>
+<p>例如：转账时bob并没有足够金额；</p>
+</li>
+<li><p>系统宕机：重启后进入recovery模式；</p>
+</li>
+</ol>
+<h5 id="事务的调优原则"><a href="#事务的调优原则" class="headerlink" title="事务的调优原则"></a>事务的调优原则</h5><p>在不影响业务应用的前提下</p>
+<ol>
+<li><p>减少锁的覆盖范围</p>
+<ul>
+<li>Misaim表锁 －&gt; Innodb行锁</li>
+<li>原位锁 －&gt; MVCC多版本</li>
+</ul>
+</li>
+<li><p>增加锁上可并行的线程数</p>
+<ul>
+<li>读锁写锁分离，允许并行读取数据</li>
+</ul>
+</li>
+<li><p>选择正确的锁类型</p>
+<ul>
+<li>悲观锁：适合并发争抢比较严重场景</li>
+<li>乐观锁：适合并发争抢不太严重场景</li>
+</ul>
+<blockquote>
+<p>乐观锁？悲观锁？</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="三、单机事务拾遗"><a href="#三、单机事务拾遗" class="headerlink" title="三、单机事务拾遗"></a>三、单机事务拾遗</h4><h5 id="事务单元扩展：实现"><a href="#事务单元扩展：实现" class="headerlink" title="事务单元扩展：实现"></a>事务单元扩展：实现</h5><p> <img src="/Users/zhoumeng/Desktop/7.png" alt="7"></p>
+<p> 体会利用两阶段锁来实现一组事务单元。</p>
+<blockquote>
+<p>锁实现是上世纪7、80年代的数据库实现，现在的主要实现是MVCC和部分锁实现；</p>
+</blockquote>
+<h5 id="死锁扩展-U锁"><a href="#死锁扩展-U锁" class="headerlink" title="死锁扩展-U锁"></a>死锁扩展-U锁</h5><ul>
+<li><p>死锁是很容易产生的，针对同一个数据进行读写就可能产生；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Update set A = A-1 </div><div class="line">where id = 100; //一条语句两个原子操作</div></pre></td></tr></table></figure>
+<p><img src="/Users/zhoumeng/Desktop/8.png" alt="8"></p>
+</li>
+<li><p>更新锁（U锁）</p>
+<p>加锁条件:当一个事务进行update操作时,数据库系统会先为事务分配一把更新锁.</p>
+<p>解锁条件:当读取数据完毕,执行更新操作时,会把更新锁升级为独占锁.</p>
+<p><img src="/Users/zhoumeng/Desktop/更新锁.png" alt="更新锁"></p>
+<p>​</p>
+</li>
+</ul>
+<h5 id="MVCC拾遗"><a href="#MVCC拾遗" class="headerlink" title="MVCC拾遗"></a>MVCC拾遗</h5><ul>
+<li><p>快照读（Snapshot Isolation）</p>
+<ul>
+<li>针对读多写少场景优化</li>
+<li>并行度能达到或超过读未提交，而隔离级别很高；</li>
+</ul>
+</li>
+<li><p>写和写，有没有可能并行？</p>
+<ul>
+<li><p>假设写写并行：bob给smith转账，同时smith给bob转账；</p>
+<p><img src="/Users/zhoumeng/Desktop/10.png" alt="10"></p>
+</li>
+<li><p>方案一：加锁</p>
+</li>
+<li><p>方案二：乐观锁并发，让版本低的并发更新回滚</p>
+<p>优势：并发低时性能好</p>
+<p>代价：并发高时失败率高，需要不断重试</p>
+<p><img src="/Users/zhoumeng/Desktop/11.png" alt="11"></p>
+<p>​</p>
+</li>
+</ul>
+</li>
 </ul>
 
       
@@ -438,7 +598,7 @@
       
         <div class="post-tags">
           
-            <a href="../../../../tags/总结/" rel="tag"># 总结</a>
+            <a href="../../../../tags/事务/" rel="tag"># 事务</a>
           
         </div>
       
@@ -451,8 +611,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="../../../02/28/Concurrency-Control-and-Recovery-in-Database-Systems-学习笔记/" rel="next" title="Concurrency Control and Recovery in Database Systems 学习笔记">
-                <i class="fa fa-chevron-left"></i> Concurrency Control and Recovery in Database Systems 学习笔记
+              <a href="../../01/阅读：技术文章/" rel="next" title="阅读：技术文章">
+                <i class="fa fa-chevron-left"></i> 阅读：技术文章
               </a>
             
           </div>
@@ -460,10 +620,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="../../10/事务与分布式事务原理与实现-沈询-：学习笔记1/" rel="prev" title="事务与分布式事务原理与实现_沈询 ：学习笔记1">
-                事务与分布式事务原理与实现_沈询 ：学习笔记1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -478,10 +634,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/03/01/阅读：技术文章/"
-     data-title="阅读：技术文章"
+        <div class="ds-share flat" data-thread-key="2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记1/"
+     data-title="事务与分布式事务原理与实现_沈询 ：学习笔记1"
      data-content=""
-     data-url="http://zhoumeng.xyz/2017/03/01/阅读：技术文章/">
+     data-url="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记1/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -508,8 +664,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/01/阅读：技术文章/"
-           data-title="阅读：技术文章" data-url="http://zhoumeng.xyz/2017/03/01/阅读：技术文章/">
+      <div class="ds-thread" data-thread-key="2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记1/"
+           data-title="事务与分布式事务原理与实现_沈询 ：学习笔记1" data-url="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记1/">
       </div>
     
   </div>
@@ -631,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#2017-3-4"><span class="nav-number">1.</span> <span class="nav-text">2017.3.4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2017-3-3"><span class="nav-number">2.</span> <span class="nav-text">2017.3.3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2017-3-1"><span class="nav-number">3.</span> <span class="nav-text">2017.3.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2017-2-27"><span class="nav-number">4.</span> <span class="nav-text">2017.2.27</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2017-2-25"><span class="nav-number">5.</span> <span class="nav-text">2017.2.25</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2017-2-24"><span class="nav-number">6.</span> <span class="nav-text">2017.2.24</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2017-2-23"><span class="nav-number">7.</span> <span class="nav-text">2017.2.23</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、单机事务"><span class="nav-number">1.</span> <span class="nav-text">一、单机事务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#事务简介"><span class="nav-number">1.1.</span> <span class="nav-text">事务简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务处理的常见问题"><span class="nav-number">1.2.</span> <span class="nav-text">事务处理的常见问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、深入单机事务"><span class="nav-number">2.</span> <span class="nav-text">二、深入单机事务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#事务的ACID"><span class="nav-number">2.1.</span> <span class="nav-text">事务的ACID</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#单机事务的典型异常应对策略"><span class="nav-number">2.2.</span> <span class="nav-text">单机事务的典型异常应对策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务的调优原则"><span class="nav-number">2.3.</span> <span class="nav-text">事务的调优原则</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、单机事务拾遗"><span class="nav-number">3.</span> <span class="nav-text">三、单机事务拾遗</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#事务单元扩展：实现"><span class="nav-number">3.1.</span> <span class="nav-text">事务单元扩展：实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁扩展-U锁"><span class="nav-number">3.2.</span> <span class="nav-text">死锁扩展-U锁</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MVCC拾遗"><span class="nav-number">3.3.</span> <span class="nav-text">MVCC拾遗</span></a></li></ol></li></ol></div>
             
 
           </div>
