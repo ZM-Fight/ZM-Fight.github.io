@@ -93,23 +93,23 @@
 <meta property="og:url" content="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记1/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
 <meta property="og:description" content="学习笔记：事务与分布式事务原理与实现_沈询">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/1.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/2.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/3.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/4.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/5.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/6.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/6.png">
+<meta property="og:image" content="http://zhoumeng.xyz/1.png">
+<meta property="og:image" content="http://zhoumeng.xyz/2.png">
+<meta property="og:image" content="http://zhoumeng.xyz/3.png">
+<meta property="og:image" content="http://zhoumeng.xyz/4.png">
+<meta property="og:image" content="http://zhoumeng.xyz/5.png">
+<meta property="og:image" content="http://zhoumeng.xyz/6.png">
+<meta property="og:image" content="http://zhoumeng.xyz/6.png">
 <meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/7.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/8.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/更新锁.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/10.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/11.png">
-<meta property="og:updated_time" content="2017-03-09T18:21:53.000Z">
+<meta property="og:image" content="http://zhoumeng.xyz/8.png">
+<meta property="og:image" content="http://zhoumeng.xyz/更新锁.png">
+<meta property="og:image" content="http://zhoumeng.xyz/10.png">
+<meta property="og:image" content="http://zhoumeng.xyz/11.png">
+<meta property="og:updated_time" content="2017-03-09T18:25:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务与分布式事务原理与实现_沈询 ：学习笔记1">
 <meta name="twitter:description" content="学习笔记：事务与分布式事务原理与实现_沈询">
-<meta name="twitter:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/1.png">
+<meta name="twitter:image" content="http://zhoumeng.xyz/1.png">
 
 
 
@@ -427,12 +427,12 @@
 </ol>
 <h4 id="二、深入单机事务"><a href="#二、深入单机事务" class="headerlink" title="二、深入单机事务"></a>二、深入单机事务</h4><h5 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h5><ol>
 <li><p>原子性</p>
-<p><img src="/Users/zhoumeng/Desktop/1.png" alt="1"></p>
+<p><img src="1.png" alt=""></p>
 <p>原子性保证事务或者成功执行ver3，或者失败回滚ver1，不会处于中间状态；</p>
 <p>原子性不会关心ver2会不会被其他事务看到；</p>
 </li>
 <li><p>一致性</p>
-<p><img src="/Users/zhoumeng/Desktop/2.png" alt="屏幕快照 2017-03-09 下午8.33.58"></p>
+<p><img src="2.png" alt=""></p>
 <p>一致性的保证在于处理视点3：将视点3上移到视点1或者下移到视点2，保证事务单元全部成功后才可见；</p>
 <p>一致性的核心在于保证事务的happen-before关系，因此导致问题并发度太低；</p>
 </li>
@@ -444,7 +444,7 @@
 <li><p>序列化读写（Serializable）</p>
 <ul>
 <li><p>排他锁 ：对于冲突资源只能一个一个的访问，多个事务串行执行</p>
-<p><img src="/Users/zhoumeng/Desktop/3.png" alt="3"></p>
+<p><img src="3.png" alt=""></p>
 <blockquote>
 <p>性能差～不可用</p>
 </blockquote>
@@ -455,7 +455,7 @@
 <ul>
 <li><p>读写锁：读锁不能被写锁升级</p>
 <p>（1）读读并行    </p>
-<p><img src="/Users/zhoumeng/Desktop/4.png" alt="4"></p>
+<p><img src="4.png" alt=""></p>
 </li>
 </ul>
 </li>
@@ -464,7 +464,7 @@
 <li><p>读写锁：读锁能被写锁升级</p>
 <p>（1）读读并行    </p>
 <p>（2）读写并行</p>
-<p><img src="/Users/zhoumeng/Desktop/5.png" alt="5"></p>
+<p><img src="5.png" alt=""></p>
 </li>
 </ul>
 </li>
@@ -474,7 +474,7 @@
 <p>（1）读读并行    </p>
 <p>（2）读写并行</p>
 <p>（3）写读并行</p>
-<p><img src="/Users/zhoumeng/Desktop/6.png" alt="6"></p>
+<p><img src="6.png" alt=""></p>
 </li>
 </ul>
 </li>
@@ -488,7 +488,7 @@
 <li><p>针对读多写少场景优化</p>
 </li>
 <li><p>并行度能达到或超过读未提交，而隔离级别很高；</p>
-<p><img src="/Users/zhoumeng/Desktop/6.png" alt="6"></p>
+<p><img src="6.png" alt=""></p>
 </li>
 </ul>
 </li>
@@ -543,12 +543,12 @@
 <h5 id="死锁扩展-U锁"><a href="#死锁扩展-U锁" class="headerlink" title="死锁扩展-U锁"></a>死锁扩展-U锁</h5><ul>
 <li><p>死锁是很容易产生的，针对同一个数据进行读写就可能产生；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Update set A = A-1 </div><div class="line">where id = 100; //一条语句两个原子操作</div></pre></td></tr></table></figure>
-<p><img src="/Users/zhoumeng/Desktop/8.png" alt="8"></p>
+<p><img src="8.png" alt=""></p>
 </li>
 <li><p>更新锁（U锁）</p>
 <p>加锁条件:当一个事务进行update操作时,数据库系统会先为事务分配一把更新锁.</p>
 <p>解锁条件:当读取数据完毕,执行更新操作时,会把更新锁升级为独占锁.</p>
-<p><img src="/Users/zhoumeng/Desktop/更新锁.png" alt="更新锁"></p>
+<p><img src="更新锁.png" alt=""></p>
 <p>​</p>
 </li>
 </ul>
@@ -562,14 +562,14 @@
 <li><p>写和写，有没有可能并行？</p>
 <ul>
 <li><p>假设写写并行：bob给smith转账，同时smith给bob转账；</p>
-<p><img src="/Users/zhoumeng/Desktop/10.png" alt="10"></p>
+<p><img src="10.png" alt=""></p>
 </li>
 <li><p>方案一：加锁</p>
 </li>
 <li><p>方案二：乐观锁并发，让版本低的并发更新回滚</p>
 <p>优势：并发低时性能好</p>
 <p>代价：并发高时失败率高，需要不断重试</p>
-<p><img src="/Users/zhoumeng/Desktop/11.png" alt="11"></p>
+<p><img src="11.png" alt=""></p>
 <p>​</p>
 </li>
 </ul>
