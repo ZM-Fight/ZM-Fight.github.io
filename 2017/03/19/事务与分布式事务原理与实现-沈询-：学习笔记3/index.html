@@ -93,13 +93,13 @@
 <meta property="og:url" content="http://zhoumeng.xyz/2017/03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
 <meta property="og:description" content="分布式事务改善方案分析">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/以太网.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/share disk方案.png">
-<meta property="og:updated_time" content="2017-03-19T04:11:12.000Z">
+<meta property="og:image" content="http://zhoumeng.xyz/以太网.png">
+<meta property="og:image" content="http://zhoumeng.xyz/share disk方案.png">
+<meta property="og:updated_time" content="2017-03-19T04:12:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务与分布式事务原理与实现-沈询-：学习笔记3">
 <meta name="twitter:description" content="分布式事务改善方案分析">
-<meta name="twitter:image" content="http://zhoumeng.xyz/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/以太网.png">
+<meta name="twitter:image" content="http://zhoumeng.xyz/以太网.png">
 
 
 
@@ -360,12 +360,12 @@
 </blockquote>
 <p>锁延迟的主要原因在于以太网：TCP封包解包，多次路由，系统态与用户态的切换，最终导致网络延迟会很高；</p>
 <p><em>FC/Infiniband</em>的核心是：重新写了一套协议，采用更高效的组网方式，远程系统调用的时间可以非常短；</p>
-<p><img src="/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/以太网.png" alt="以太网"></p>
+<p><img src="以太网.png" alt="以太网"></p>
 <p>应用：<em>Oracle RAC</em></p>
 <p>问题：系统成本较高，方案比较复杂；</p>
 </li>
 <li><p>放弃分布式事务</p>
-<p><img src="/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/share disk方案.png" alt="share disk方案"></p>
+<p><img src="share disk方案.png" alt="share disk方案"></p>
 <p>事务的日志存放：使用RAID方案存储日志</p>
 <p>应用：<em>Oracle RAC</em>    <em>Amazon Aurora</em></p>
 <p>优势：</p>
