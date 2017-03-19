@@ -71,7 +71,7 @@
 <link href="../../../../css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="事务," />
+  <meta name="keywords" content="Hexo, 梦工厂" />
 
 
 
@@ -87,22 +87,19 @@
 
 
 
-<meta name="description" content="从单机事务到分布式事务">
+<meta name="description" content="分布式事务改善方案分析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事务与分布式事务原理与实现-沈询：学习笔记2">
-<meta property="og:url" content="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记2/index.html">
+<meta property="og:title" content="事务与分布式事务原理与实现-沈询-：学习笔记3">
+<meta property="og:url" content="http://zhoumeng.xyz/2017/03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
-<meta property="og:description" content="从单机事务到分布式事务">
-<meta property="og:image" content="http://zhoumeng.xyz/网络带来的.png">
-<meta property="og:image" content="http://zhoumeng.xyz/共享内存.png">
-<meta property="og:image" content="http://zhoumeng.xyz/消息传递的代价.png">
-<meta property="og:image" content="http://zhoumeng.xyz/单机事务.png">
-<meta property="og:image" content="http://zhoumeng.xyz/分布式事务.png">
-<meta property="og:updated_time" content="2017-03-18T13:43:51.000Z">
+<meta property="og:description" content="分布式事务改善方案分析">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/以太网.png">
+<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/share disk方案.png">
+<meta property="og:updated_time" content="2017-03-19T04:11:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事务与分布式事务原理与实现-沈询：学习笔记2">
-<meta name="twitter:description" content="从单机事务到分布式事务">
-<meta name="twitter:image" content="http://zhoumeng.xyz/网络带来的.png">
+<meta name="twitter:title" content="事务与分布式事务原理与实现-沈询-：学习笔记3">
+<meta name="twitter:description" content="分布式事务改善方案分析">
+<meta name="twitter:image" content="http://zhoumeng.xyz/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/以太网.png">
 
 
 
@@ -130,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记2/"/>
+  <link rel="canonical" href="http://zhoumeng.xyz/2017/03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/"/>
 
 
 
 
 
-  <title> 事务与分布式事务原理与实现-沈询：学习笔记2 | 梦工厂's blog </title>
+  <title> 事务与分布式事务原理与实现-沈询-：学习笔记3 | 梦工厂's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -286,7 +283,7 @@
             
             
               
-                事务与分布式事务原理与实现-沈询：学习笔记2
+                事务与分布式事务原理与实现-沈询-：学习笔记3
               
             
           </h1>
@@ -301,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-10T19:28:12+08:00">
-                2017-03-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-19T10:18:22+08:00">
+                2017-03-19
               </time>
             
 
@@ -311,28 +308,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="../../../../categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -343,7 +318,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记2/" itemprop="commentCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -358,7 +333,7 @@
 
           
               <div class="post-description">
-                  从单机事务到分布式事务
+                  分布式事务改善方案分析
               </div>
           
 
@@ -373,70 +348,48 @@
       
 
       
-        <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>完整的事务支持</p>
-<ul>
-<li>像传统单机事务一样的操作方式</li>
-<li>可按需无限扩展</li>
+        <h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><ul>
+<li>确保兼容单机数据库 （像单机事务一样来操作分布式事务）</li>
+<li>尽最大努力保证扩展性</li>
+<li>尽最大努力保证高可用和数据安全</li>
 </ul>
-<h4 id="分布式事务的尝试与问题"><a href="#分布式事务的尝试与问题" class="headerlink" title="分布式事务的尝试与问题"></a>分布式事务的尝试与问题</h4><h5 id="网络带来的，网络失去的"><a href="#网络带来的，网络失去的" class="headerlink" title="网络带来的，网络失去的"></a>网络带来的，网络失去的</h5><ol>
-<li><p>网络带来的（去中心化，无单点）</p>
-<ul>
-<li>理论上无限的扩展能力</li>
-<li>理论上无限的数据安全性 （replication）</li>
-<li>理论上无限的服务可用性 （单机宕机）</li>
-</ul>
-<p><img src="网络带来的.png" alt="网络带来的"></p>
+<h4 id="Share-Disk方案-单机事务"><a href="#Share-Disk方案-单机事务" class="headerlink" title="Share Disk方案 - 单机事务"></a><em>Share Disk</em>方案 - 单机事务</h4><ol>
+<li><p>采用远程内存直接访问RDMA ( <em>FC/Infiniband</em> )  </p>
+<blockquote>
+<p><strong>RDMA</strong>技术全称<strong>远程直接数据存取</strong>，就是为了解决网络传输中服务器端数据处理的延迟而产生的。RDMA通过网络把资料直接传入计算机的存储区，将数据从一个系统快速移动到远程系统存储器中，而不对操作系统造成任何影响，这样就不需要用到多少计算机的处理功能。它消除了外部存储器复制和文本交换操作，因而能解放内存带宽和CPU周期用于改进应用系统性能。</p>
+</blockquote>
+<p>锁延迟的主要原因在于以太网：TCP封包解包，多次路由，系统态与用户态的切换，最终导致网络延迟会很高；</p>
+<p><em>FC/Infiniband</em>的核心是：重新写了一套协议，采用更高效的组网方式，远程系统调用的时间可以非常短；</p>
+<p><img src="/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/以太网.png" alt="以太网"></p>
+<p>应用：<em>Oracle RAC</em></p>
+<p>问题：系统成本较高，方案比较复杂；</p>
 </li>
-<li><p>网络失去的</p>
-<ul>
-<li><p>共享数据困难</p>
-<p> 共享数据的方式：共享内存＋消息传递</p>
-</li>
-<li><p>共享内存的代价：共享内存会导致单点，内存瓶颈；</p>
-<p><img src="共享内存.png" alt="共享内存"></p>
-</li>
-<li><p>消息传递共享数据的代价</p>
-<p>（1）更多的延迟（消息传递需要时间）</p>
-<p>（2）确定性延迟（比如：丢包，不可达）</p>
-<p>（3）更多的延迟（为了保证数据传输）</p>
-<p><img src="消息传递的代价.png" alt="消息传递的代价"></p>
-<p>​</p>
-</li>
-</ul>
+<li><p>放弃分布式事务</p>
+<p><img src="/Users/zhoumeng/Public/hexo/source/_posts/事务与分布式事务原理与实现-沈询-：学习笔记3/share disk方案.png" alt="share disk方案"></p>
+<p>事务的日志存放：使用RAID方案存储日志</p>
+<p>应用：<em>Oracle RAC</em>    <em>Amazon Aurora</em></p>
+<p>优势：</p>
+<p>（1）兼容性好，SQL全兼容</p>
+<p>（2）能提升读性能</p>
+<p>劣势：</p>
+<p>（1）写性能巨大下降</p>
+<p>​    数据写入cache，<strong>同步等待</strong>其他机器的内存cache清空，然后刷入磁盘；</p>
+<p>（2）高可用切换时间长</p>
+<p>​    数据同步的迁移会很长时间：<em>share disk</em>本质是一个同机房方案，因为跨机房写入延迟很高；</p>
+<p>（3）扩展性有限，实测4台基本是极限</p>
+<p>​    上层计算机器，新机器进来数据同步开销越来越高；下层disk也有限，因为它假定业务需求没这么高；</p>
+<p>（4）传递距离有限制</p>
 </li>
 </ol>
-<h5 id="基于锁的事务实现中遇到的问题"><a href="#基于锁的事务实现中遇到的问题" class="headerlink" title="基于锁的事务实现中遇到的问题"></a>基于锁的事务实现中遇到的问题</h5><ol>
-<li><p>从2PL 到 2PC</p>
-<p>2PL：A和B在不同的机器上，如何保证提交原子性？</p>
-<p>2PC：将commit解锁的过程在多台机器上进行；</p>
-<p>新问题：（1）谁来负责跨机提交？（2）如何处理网络不可达？</p>
+<h4 id="Share-Nothing方案-分布式事务"><a href="#Share-Nothing方案-分布式事务" class="headerlink" title="Share Nothing方案 - 分布式事务"></a><em>Share Nothing</em>方案 - 分布式事务</h4><h5 id="1-标准2PC方案"><a href="#1-标准2PC方案" class="headerlink" title="(1) 标准2PC方案"></a>(1) 标准2PC方案</h5><p>​    读写＋写读无法并行，系统的并发度没有MVCC高；</p>
+<h5 id="2-MVCC-2PC方案"><a href="#2-MVCC-2PC方案" class="headerlink" title="(2) MVCC+2PC方案"></a>(2) MVCC+2PC方案</h5><ol>
+<li><p>逻辑时间 <em>Postgres XC</em>、<em>Postgres XL</em></p>
+<p>单点时间戳分配器</p>
 </li>
-<li><p>Coordinator 协调器</p>
-<p>（1）协调器负责跨机提交</p>
-<p>（2）commit失败处理方式：努力送达（现代主流实现）＋停机等待人工处理</p>
-<p>（3）协调者必须是多机，保证高可用；</p>
-<p>（4）记录日志，协调者掌握事务运行的状态；</p>
-<p><img src="单机事务.png" alt="单机事务"></p>
-<p><img src="分布式事务.png" alt="分布式事务"></p>
+<li><p>物理时间 <em>Google spanner</em></p>
+<p>TrueTime</p>
 </li>
 </ol>
-<h5 id="MVCC的顺序问题"><a href="#MVCC的顺序问题" class="headerlink" title="MVCC的顺序问题"></a>MVCC的顺序问题</h5><p>分布式的困局：逻辑时间戳</p>
-<blockquote>
-<p>MVCC的关键在于时间戳，单机下很容易实现逻辑时间戳，但是在分布式系统时间戳的分配成为问题；</p>
-</blockquote>
-<ul>
-<li>一台机器去分配号码，这台机器就是单点；</li>
-<li>一组机器分配号码？不同的时间戳机器同步递增很困难；  </li>
-</ul>
-<h5 id="分布式事务的主要难点"><a href="#分布式事务的主要难点" class="headerlink" title="分布式事务的主要难点"></a>分布式事务的主要难点</h5><ul>
-<li>事务延迟变大问题</li>
-<li>事务异常处理 （单机容易处理，分布式难处理。协议成本网络成本进一步加大延迟）</li>
-<li>日志记录 （保证事务持久性，记录很多日志，进一步加大延迟）</li>
-<li>MVCC的顺序问题 （时间戳分配，进一步加大延迟 ）</li>
-</ul>
-<blockquote>
-<p>（1）系统不可用：机器宕机，网络中断，内存故障－&gt;复制协议<br>（2）逻辑不可用：逻辑错误－&gt;应用的回滚</p>
-</blockquote>
 
       
     </div>
@@ -458,12 +411,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="../../../../tags/事务/" rel="tag"># 事务</a>
-          
-        </div>
-      
 
       
         
@@ -473,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="../事务与分布式事务原理与实现-沈询-：学习笔记1/" rel="next" title="事务与分布式事务原理与实现_沈询 ：学习笔记1">
-                <i class="fa fa-chevron-left"></i> 事务与分布式事务原理与实现_沈询 ：学习笔记1
+              <a href="../../10/事务与分布式事务原理与实现-沈询-：学习笔记2/" rel="next" title="事务与分布式事务原理与实现-沈询：学习笔记2">
+                <i class="fa fa-chevron-left"></i> 事务与分布式事务原理与实现-沈询：学习笔记2
               </a>
             
           </div>
@@ -482,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="../../19/事务与分布式事务原理与实现-沈询-：学习笔记3/" rel="prev" title="事务与分布式事务原理与实现-沈询-：学习笔记3">
-                事务与分布式事务原理与实现-沈询-：学习笔记3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -500,10 +443,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记2/"
-     data-title="事务与分布式事务原理与实现-沈询：学习笔记2"
+        <div class="ds-share flat" data-thread-key="2017/03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/"
+     data-title="事务与分布式事务原理与实现-沈询-：学习笔记3"
      data-content=""
-     data-url="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记2/">
+     data-url="http://zhoumeng.xyz/2017/03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -530,8 +473,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记2/"
-           data-title="事务与分布式事务原理与实现-沈询：学习笔记2" data-url="http://zhoumeng.xyz/2017/03/10/事务与分布式事务原理与实现-沈询-：学习笔记2/">
+      <div class="ds-thread" data-thread-key="2017/03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/"
+           data-title="事务与分布式事务原理与实现-沈询-：学习笔记3" data-url="http://zhoumeng.xyz/2017/03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/">
       </div>
     
   </div>
@@ -653,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式事务的尝试与问题"><span class="nav-number">2.</span> <span class="nav-text">分布式事务的尝试与问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#网络带来的，网络失去的"><span class="nav-number">2.1.</span> <span class="nav-text">网络带来的，网络失去的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基于锁的事务实现中遇到的问题"><span class="nav-number">2.2.</span> <span class="nav-text">基于锁的事务实现中遇到的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MVCC的顺序问题"><span class="nav-number">2.3.</span> <span class="nav-text">MVCC的顺序问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式事务的主要难点"><span class="nav-number">2.4.</span> <span class="nav-text">分布式事务的主要难点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Share-Disk方案-单机事务"><span class="nav-number">2.</span> <span class="nav-text">Share Disk方案 - 单机事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Share-Nothing方案-分布式事务"><span class="nav-number">3.</span> <span class="nav-text">Share Nothing方案 - 分布式事务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-标准2PC方案"><span class="nav-number">3.1.</span> <span class="nav-text">(1) 标准2PC方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-MVCC-2PC方案"><span class="nav-number">3.2.</span> <span class="nav-text">(2) MVCC+2PC方案</span></a></li></ol></li></ol></div>
             
 
           </div>
