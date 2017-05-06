@@ -1,0 +1,861 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="../../../../lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="../../../../lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="../../../../css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学习笔记," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="图解TCP/IP：1-网络基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图解TCP/IP：学习笔记1">
+<meta property="og:url" content="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：笔记1/index.html">
+<meta property="og:site_name" content="梦工厂's blog">
+<meta property="og:description" content="图解TCP/IP：1-网络基础知识">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/381412/201610/381412-20161022162638342-1113778286.png">
+<meta property="og:image" content="http://zhoumeng.xyz/OSI参考模型各层分工.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201302/25/1361799047_8707.png">
+<meta property="og:image" content="http://zhoumeng.xyz/电路交换与分组交换.png">
+<meta property="og:image" content="http://zhoumeng.xyz/分组通信.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129100408599-151994374.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129201030943-1825095263.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129202030849-2019130282.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129203413365-1640441389.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205142959-1867845950.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205123334-1425993205.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205850021-1999600660.png">
+<meta property="og:image" content="http://zhoumeng.xyz/邮件网关.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129210321334-1258384060.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129210422084-690325866.png">
+<meta property="og:updated_time" content="2017-05-06T09:06:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图解TCP/IP：学习笔记1">
+<meta name="twitter:description" content="图解TCP/IP：1-网络基础知识">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/381412/201610/381412-20161022162638342-1113778286.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'zm2014wangyi',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：笔记1/"/>
+
+
+
+
+
+  <title> 图解TCP/IP：学习笔记1 | 梦工厂's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">梦工厂's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://zhoumeng.xyz">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="梦工厂">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="../../../../images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="梦工厂's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                图解TCP/IP：学习笔记1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T16:57:30+08:00">
+                2017-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="../../../../categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/06/图解TCP-IP：笔记1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  图解TCP/IP：1-网络基础知识
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="网络基础知识"><a href="#网络基础知识" class="headerlink" title="网络基础知识"></a>网络基础知识</h4><h6 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h6><p>协议就是计算机与计算机之间通过网络实现通信是事先达成的一种“约定”。</p>
+<p>两台计算机之间必须能够支持相同的协议，并遵循相同协议进行处理，这样才能实现相互通信。</p>
+<p><img src="http://images2015.cnblogs.com/blog/381412/201610/381412-20161022162638342-1113778286.png" alt=""></p>
+<h6 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h6><ol>
+<li><p>OSI参考模型</p>
+<p><img src="OSI参考模型各层分工.png" alt="OSI参考模型各层分工"></p>
+</li>
+<li><p>对比</p>
+<p>OSI参考模型终究是一个“模型”，它只是对各层的作用做了一系列粗略的界定，并没有对协议和接口进行详细的定义。</p>
+<p><img src="http://img.my.csdn.net/uploads/201302/25/1361799047_8707.png" alt=""></p>
+</li>
+</ol>
+<h6 id="传输方式的分类"><a href="#传输方式的分类" class="headerlink" title="传输方式的分类"></a>传输方式的分类</h6><ol>
+<li><p>面向有连接型和面向无连接型</p>
+<p>通过网络发送数据，大致可以分为面向有连接与面向无连接两种类型；</p>
+<ul>
+<li><p>面向有连接类型（ATM、TCP、帧中继）</p>
+<p>在通信传输之前，先打开一个连接。连接被关闭时无法发送数据。</p>
+</li>
+<li><p>面向无连接类型（IP、UDP、以太网）</p>
+<p>无需确认对端是否存在，发送端可随时发送数据。</p>
+</li>
+</ul>
+</li>
+<li><p>电路交换与分组交换</p>
+<p>电路交换会独占通信线路，分组交换可以共享通信线路；</p>
+<blockquote>
+<p>了解技术的前因后果还是很有必要的</p>
+</blockquote>
+<p><img src="电路交换与分组交换.png" alt="电路交换与分组交换"></p>
+<p>分组交换是指将大数据分割为一个个叫做包的较小单位进行传输的方法。</p>
+<p><img src="分组通信.png" alt="分组通信"></p>
+</li>
+<li><p>根据接收端数量分类</p>
+<ul>
+<li><p>单播Unicast：1对1通信</p>
+</li>
+<li><p>广播Broadcast：同一个数据链路内的所有计算机</p>
+</li>
+<li><p>多播Multicast：特定组内的通信</p>
+</li>
+<li><p>任播Anycast：特定组内的任意一台计算机</p>
+<p>任播从目标主机群中选择一台最符合网络条件的主机作为目标主机发送消息。通常，所选择的那台特定主机将返回一个单播信号，随后发送端主机只跟这台主机进行通信。</p>
+<p>应用：DNS根域名解析服务器</p>
+</li>
+</ul>
+</li>
+</ol>
+<h6 id="网络的硬件设备"><a href="#网络的硬件设备" class="headerlink" title="网络的硬件设备"></a>网络的硬件设备</h6><p>搭建一套网络环境需要涉及到很多电缆和网络设备，下面只介绍下连接计算机和计算机的硬件设备：(学习一个)</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129100408599-151994374.png" alt=""></p>
+<ol>
+<li><p>网卡：使计算机联网的设备</p>
+</li>
+<li><p>中继器：OSI模型的第一层物理层上延长网络的设备</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129201030943-1825095263.png" alt=""></p>
+<p>（1）一般情况下，中继器两端连接的是相同的通信媒介（有些中继器也可完成不同通信媒介之间的转接工作，例如在同轴电缆和光缆之间转换信号，但是不能在传输速度不同的媒介之间转发）；</p>
+<p>（2）有些中继器可提供多个端口服务，被称为中继集线器（Hub）或者集线器，每个端口都可称为一个中继器；</p>
+</li>
+<li><p>网桥／2层交换机：OSI模型的第二层，数据链路层上延长网络的设备</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129202030849-2019130282.png" alt=""></p>
+<p>（1）网桥可以识别数据链路层中的数据帧，并将数据帧临时存储于内存，因此网桥能够连接不同传输速率的数据链路，并且不限制连接网段的个数；</p>
+<p>（2）数据链路中有个数据帧叫做FCS，用以校验数据是否正确送达目的地；网桥通过检查该域中的值，将损坏的数据丢弃；</p>
+<p>（3）网桥可以通过地址自学机制和过滤功能控制网络流量；</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129203413365-1640441389.png" alt=""></p>
+<p>（4）以太网等网络中经常使用交换集线器（Hub），也属于网桥的一种；交换集线器中连接电缆的端口都能提供类似网桥的功能</p>
+</li>
+<li><p>路由器／3层交换机：OSI模型的第三层，网络层面上连接两个网络、并对分组报文进行转发的设备。</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205142959-1867845950.png" alt=""></p>
+<p>（1）网桥是根据物理地址进行处理，路由器根据IP地址进行处理；</p>
+<p>（2）路由器可以连接不同的数据链路，它还有分担网络负荷的作用（由于路由器会分割数据链路，因此数据链路层的广播消息将无法继续传播），某些路由器具备一定的网络安全功能；</p>
+</li>
+<li><p>4～7层交换机：OSI模型中处理从传输层至应用层的数据</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205123334-1425993205.png" alt=""></p>
+<p>以TCP等协议的传输层及其上面的应用层为基础，分析收发数据，并对其进行特定的处理.</p>
+<p>例如：负载均衡器、带宽控制、广域网加速器、特殊应用访问、防火墙等；</p>
+</li>
+<li><p>网关：OSI模型中负责将从传输层到应用层的数据进行转换和转发的设备</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205850021-1999600660.png" alt=""></p>
+<p>（1）网关与4～7层交换机一样都是处理传输层及以上的数据，但是网关不仅转发数据还负责对数据进行转换；它通常会使用一个表示层或应用层网关，在两个不能进行直接通信的协议之间进行翻译，最终实现两者之间的通信。</p>
+<p>（2）应用场景：</p>
+<p><img src="邮件网关.png" alt="邮件网关"></p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129210321334-1258384060.png" alt=""></p>
+</li>
+<li><p>各种设备及其对应网络分层预览图：</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129210422084-690325866.png" alt=""></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="../../../../tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="../../../03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/" rel="next" title="事务与分布式事务原理与实现-沈询：学习笔记3">
+                <i class="fa fa-chevron-left"></i> 事务与分布式事务原理与实现-沈询：学习笔记3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/05/06/图解TCP-IP：笔记1/"
+     data-title="图解TCP/IP：学习笔记1"
+     data-content=""
+     data-url="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：笔记1/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/06/图解TCP-IP：笔记1/"
+           data-title="图解TCP/IP：学习笔记1" data-url="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：笔记1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="../../../../images/avatar.png"
+               alt="梦工厂" />
+          <p class="site-author-name" itemprop="name">梦工厂</p>
+           
+              <p class="site-description motion-element" itemprop="description">A goal is a dream with a deadline!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="../../../../archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="../../../../categories/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="../../../../tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3063931872" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/6e7c82da2a5e" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-chain"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络基础知识"><span class="nav-number">1.</span> <span class="nav-text">网络基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#协议"><span class="nav-number">1.0.1.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OSI参考模型"><span class="nav-number">1.0.2.</span> <span class="nav-text">OSI参考模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#传输方式的分类"><span class="nav-number">1.0.3.</span> <span class="nav-text">传输方式的分类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#网络的硬件设备"><span class="nav-number">1.0.4.</span> <span class="nav-text">网络的硬件设备</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">梦工厂</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="../../../../lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="../../../../lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="../../../../js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="../../../../js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="../../../../js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="../../../../js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="../../../../js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zm2014wangyi"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="../../../../lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="../../../../js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="../../../../lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="../../../../js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
