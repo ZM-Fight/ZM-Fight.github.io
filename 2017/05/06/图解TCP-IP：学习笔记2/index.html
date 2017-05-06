@@ -87,32 +87,22 @@
 
 
 
-<meta name="description" content="图解TCP/IP：1-网络基础知识">
+<meta name="description" content="图解TCP/IP：2-TCP/IP基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图解TCP/IP：学习笔记1">
-<meta property="og:url" content="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：笔记1/index.html">
+<meta property="og:title" content="图解TCP/IP：学习笔记2">
+<meta property="og:url" content="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：学习笔记2/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
-<meta property="og:description" content="图解TCP/IP：1-网络基础知识">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/381412/201610/381412-20161022162638342-1113778286.png">
-<meta property="og:image" content="http://zhoumeng.xyz/OSI参考模型各层分工.png">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201302/25/1361799047_8707.png">
-<meta property="og:image" content="http://zhoumeng.xyz/电路交换与分组交换.png">
-<meta property="og:image" content="http://zhoumeng.xyz/分组通信.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129100408599-151994374.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129201030943-1825095263.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129202030849-2019130282.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129203413365-1640441389.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205142959-1867845950.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205123334-1425993205.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205850021-1999600660.png">
-<meta property="og:image" content="http://zhoumeng.xyz/邮件网关.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129210321334-1258384060.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129210422084-690325866.png">
-<meta property="og:updated_time" content="2017-05-06T09:13:58.000Z">
+<meta property="og:description" content="图解TCP/IP：2-TCP/IP基础知识">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201612/983980-20161207185419741-1255032928.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201612/983980-20161215100826042-1641214290.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201612/983980-20161230151030461-1917198167.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/381412/201610/381412-20161022172139701-514265966.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20131219111714593?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWxleGFuZGVyX3hmbA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-05-06T09:24:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图解TCP/IP：学习笔记1">
-<meta name="twitter:description" content="图解TCP/IP：1-网络基础知识">
-<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/381412/201610/381412-20161022162638342-1113778286.png">
+<meta name="twitter:title" content="图解TCP/IP：学习笔记2">
+<meta name="twitter:description" content="图解TCP/IP：2-TCP/IP基础知识">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/983980/201612/983980-20161207185419741-1255032928.png">
 
 
 
@@ -140,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：笔记1/"/>
+  <link rel="canonical" href="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：学习笔记2/"/>
 
 
 
 
 
-  <title> 图解TCP/IP：学习笔记1 | 梦工厂's blog </title>
+  <title> 图解TCP/IP：学习笔记2 | 梦工厂's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -296,7 +286,7 @@
             
             
               
-                图解TCP/IP：学习笔记1
+                图解TCP/IP：学习笔记2
               
             
           </h1>
@@ -311,7 +301,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T16:57:30+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T17:14:12+08:00">
                 2017-05-06
               </time>
             
@@ -353,7 +343,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/06/图解TCP-IP：笔记1/" itemprop="commentCount"></span>
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/06/图解TCP-IP：学习笔记2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -368,7 +358,7 @@
 
           
               <div class="post-description">
-                  图解TCP/IP：1-网络基础知识
+                  图解TCP/IP：2-TCP/IP基础知识
               </div>
           
 
@@ -383,93 +373,71 @@
       
 
       
-        <h4 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h4><p>协议就是计算机与计算机之间通过网络实现通信是事先达成的一种“约定”。</p>
-<p>两台计算机之间必须能够支持相同的协议，并遵循相同协议进行处理，这样才能实现相互通信。</p>
-<p><img src="http://images2015.cnblogs.com/blog/381412/201610/381412-20161022162638342-1113778286.png" alt=""></p>
-<h4 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h4><ol>
-<li><p>OSI参考模型</p>
-<p><img src="OSI参考模型各层分工.png" alt="OSI参考模型各层分工"></p>
-</li>
-<li><p>对比</p>
-<p>OSI参考模型终究是一个“模型”，它只是对各层的作用做了一系列粗略的界定，并没有对协议和接口进行详细的定义。</p>
-<p><img src="http://img.my.csdn.net/uploads/201302/25/1361799047_8707.png" alt=""></p>
+        <h4 id="TCP-IP具体含义"><a href="#TCP-IP具体含义" class="headerlink" title="TCP/IP具体含义"></a>TCP/IP具体含义</h4><p>一般来说，TCP/IP是利用IP进行通信时所必须用到的协议群的统称。</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201612/983980-20161207185419741-1255032928.png" alt="TCP/IP协议群"></p>
+<h4 id="TCP-IP分层模型"><a href="#TCP-IP分层模型" class="headerlink" title="TCP/IP分层模型"></a>TCP/IP分层模型</h4><ol>
+<li><p>TCP/IP 与 OSI参考模型</p>
+<p>OSI参考模型：了解协议的功能和作用；</p>
+<p>TCP/IP：了解协议的具体实现；</p>
 </li>
 </ol>
-<h4 id="传输方式的分类"><a href="#传输方式的分类" class="headerlink" title="传输方式的分类"></a>传输方式的分类</h4><ol>
-<li><p>面向有连接型和面向无连接型</p>
-<p>通过网络发送数据，大致可以分为面向有连接与面向无连接两种类型；</p>
-<ul>
-<li><p>面向有连接类型（ATM、TCP、帧中继）</p>
-<p>在通信传输之前，先打开一个连接。连接被关闭时无法发送数据。</p>
-</li>
-<li><p>面向无连接类型（IP、UDP、以太网）</p>
-<p>无需确认对端是否存在，发送端可随时发送数据。</p>
-</li>
-</ul>
-</li>
-<li><p>电路交换与分组交换</p>
-<p>电路交换会独占通信线路，分组交换可以共享通信线路；</p>
-<blockquote>
-<p>了解技术的前因后果还是很有必要的</p>
-</blockquote>
-<p><img src="电路交换与分组交换.png" alt="电路交换与分组交换"></p>
-<p>分组交换是指将大数据分割为一个个叫做包的较小单位进行传输的方法。</p>
-<p><img src="分组通信.png" alt="分组通信"></p>
-</li>
-<li><p>根据接收端数量分类</p>
-<ul>
-<li><p>单播Unicast：1对1通信</p>
-</li>
-<li><p>广播Broadcast：同一个数据链路内的所有计算机</p>
-</li>
-<li><p>多播Multicast：特定组内的通信</p>
-</li>
-<li><p>任播Anycast：特定组内的任意一台计算机</p>
-<p>任播从目标主机群中选择一台最符合网络条件的主机作为目标主机发送消息。通常，所选择的那台特定主机将返回一个单播信号，随后发送端主机只跟这台主机进行通信。</p>
-<p>应用：DNS根域名解析服务器</p>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="网络的硬件设备"><a href="#网络的硬件设备" class="headerlink" title="网络的硬件设备"></a>网络的硬件设备</h4><p>搭建一套网络环境需要涉及到很多电缆和网络设备，下面只介绍下连接计算机和计算机的硬件设备：(学习一个)</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129100408599-151994374.png" alt=""></p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201612/983980-20161215100826042-1641214290.png" alt="OSI参考模型 与 TCP/IP的关系"></p>
 <ol>
-<li><p>网卡：使计算机联网的设备</p>
+<li><p>互联网层（网络层）</p>
+<p><strong>OSI参考模型</strong>：网络层的作用是将数据传输到目标地址，这一层主要负责寻址和路由选择；</p>
+<p><strong>TCP/IP</strong>：互联网层和传输层的功能通常由操作系统提供，路由器需要实现通过互联网层转发分组数据包的功能；</p>
+<ul>
+<li><p><strong>IP：</strong>IP协议基于IP地址转发分组数据包数据；</p>
+<p>​    IP协议不具有重发机制，即使分组数据包未能到达对端主机也不会重发。因此属于非可靠传输协议；</p>
 </li>
-<li><p>中继器：OSI模型的第一层物理层上延长网络的设备</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129201030943-1825095263.png" alt=""></p>
-<p>（1）一般情况下，中继器两端连接的是相同的通信媒介（有些中继器也可完成不同通信媒介之间的转接工作，例如在同轴电缆和光缆之间转换信号，但是不能在传输速度不同的媒介之间转发）；</p>
-<p>（2）有些中继器可提供多个端口服务，被称为中继集线器（Hub）或者集线器，每个端口都可称为一个中继器；</p>
+<li><p><strong>ICMP: </strong> IP数据包发送过程中一旦发生异常导致无法到达对端目标地址时，需要给发送端一个发生异常的通知，ICMP就是为了该功能而定制；</p>
+<p>有时可用来诊断网络健康状况；</p>
 </li>
-<li><p>网桥／2层交换机：OSI模型的第二层，数据链路层上延长网络的设备</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129202030849-2019130282.png" alt=""></p>
-<p>（1）网桥可以识别数据链路层中的数据帧，并将数据帧临时存储于内存，因此网桥能够连接不同传输速率的数据链路，并且不限制连接网段的个数；</p>
-<p>（2）数据链路中有个数据帧叫做FCS，用以校验数据是否正确送达目的地；网桥通过检查该域中的值，将损坏的数据丢弃；</p>
-<p>（3）网桥可以通过地址自学机制和过滤功能控制网络流量；</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129203413365-1640441389.png" alt=""></p>
-<p>（4）以太网等网络中经常使用交换集线器（Hub），也属于网桥的一种；交换集线器中连接电缆的端口都能提供类似网桥的功能</p>
+<li><p><strong>ARP：</strong>从分组数据包的IP地址解析出物理地址（MAC地址）的一种协议；</p>
 </li>
-<li><p>路由器／3层交换机：OSI模型的第三层，网络层面上连接两个网络、并对分组报文进行转发的设备。</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205142959-1867845950.png" alt=""></p>
-<p>（1）网桥是根据物理地址进行处理，路由器根据IP地址进行处理；</p>
-<p>（2）路由器可以连接不同的数据链路，它还有分担网络负荷的作用（由于路由器会分割数据链路，因此数据链路层的广播消息将无法继续传播），某些路由器具备一定的网络安全功能；</p>
+</ul>
 </li>
-<li><p>4～7层交换机：OSI模型中处理从传输层至应用层的数据</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205123334-1425993205.png" alt=""></p>
-<p>以TCP等协议的传输层及其上面的应用层为基础，分析收发数据，并对其进行特定的处理.</p>
-<p>例如：负载均衡器、带宽控制、广域网加速器、特殊应用访问、防火墙等；</p>
+<li><p>传输层</p>
+<p><strong>OSI参考模型</strong>：传输层起着可靠传输的作用，只在通信双方节点上进行处理，而无需在路由器上处理；</p>
+<p><strong>TCP/IP</strong>：传输层最主要的功能是能够让应用程序之间实现通信，识别应用程序的是端口号；</p>
+<ul>
+<li><p><strong>TCP：</strong>面向有连接的传输层协议，可以保证通信两端主机之间的通信可达；</p>
+<p>可以正确的处理传输过程中丢包、传输乱序等异常情况；还能有效利用带宽，缓解网络拥堵。</p>
 </li>
-<li><p>网关：OSI模型中负责将从传输层到应用层的数据进行转换和转发的设备</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129205850021-1999600660.png" alt=""></p>
-<p>（1）网关与4～7层交换机一样都是处理传输层及以上的数据，但是网关不仅转发数据还负责对数据进行转换；它通常会使用一个表示层或应用层网关，在两个不能进行直接通信的协议之间进行翻译，最终实现两者之间的通信。</p>
-<p>（2）应用场景：</p>
-<p><img src="邮件网关.png" alt="邮件网关"></p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129210321334-1258384060.png" alt=""></p>
+<li><p><strong>UDP：</strong>面向无连接的传输层协议，不关注对端是否真的收到传送的数据；</p>
+<p>如需检查对端是否收到分组数据包，或对端是否连接到网络，需要在应用程序中实现。</p>
+<p>常用于分组数据较少或多播。广播通信及视频通信等领域。</p>
 </li>
-<li><p>各种设备及其对应网络分层预览图：</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129210422084-690325866.png" alt=""></p>
+</ul>
+<blockquote>
+<p>为什么会认为 UDP 和 TCP 是同层的协议？<a href="https://www.zhihu.com/question/20247535" target="_blank" rel="external">link</a></p>
+</blockquote>
+</li>
+<li><p>应用层（会话层以上的分层）</p>
+<p>TCP/IP分层中，将OSI中的会话层、表示层、应用层都集中到了应用程序中实现；</p>
+<p><img src="http://images2015.cnblogs.com/blog/983980/201612/983980-20161230151030461-1917198167.png" alt="客户端／服务器模型"></p>
+<ul>
+<li><p><strong>HTTP协议：</strong>（HyperText Transfer Protocol）</p>
+<p>浏览器与服务器之间通信用HTTP协议，属于OSI应用层协议；</p>
+<p>传输数据的主要格式是HTML协议，属于OSI表示层的协议；</p>
+</li>
+<li><p><strong>电子邮件协议：</strong>SMTP（Simple Mail Transfer Protocol）</p>
+<p>电子邮件的格式MIME协议，属于OSI表示层的协议；</p>
+</li>
+<li><p><strong>文件传输协议：</strong>FTP（File Transfer Protocol）</p>
+<p>传输过程中可以选择用二进制方式还是文本方式，属于OSI表示层的协议；</p>
+<p>传输时会建立两个TCP连接：发送传输请求时用到的控制连接和实际传输时用到的数据连接；</p>
+</li>
+<li><p><strong>远程登录：</strong>TELNET与SSH</p>
+</li>
+<li><p><strong>网络管理协议</strong>：SNMP（Simple Newwork Management Protocol）</p>
+</li>
+</ul>
 </li>
 </ol>
+<h4 id="TCP-IP通信数据包示例"><a href="#TCP-IP通信数据包示例" class="headerlink" title="TCP/IP通信数据包示例"></a>TCP/IP通信数据包示例</h4><p>分组数据包经过以太网的数据链路时的大致流程如下图所示：</p>
+<p><img src="http://images2015.cnblogs.com/blog/381412/201610/381412-20161022172139701-514265966.png" alt="分组数据包经过以太网的数据链路时的大致流程如下图所示"></p>
+<p><img src="http://img.blog.csdn.net/20131219111714593?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWxleGFuZGVyX3hmbA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=" [TCP/IP数据包格式详解](http://blog.csdn.net/luguifang2011/article/details/40658723)"></p>
 
       
     </div>
@@ -506,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="../../../03/19/事务与分布式事务原理与实现-沈询-：学习笔记3/" rel="next" title="事务与分布式事务原理与实现-沈询：学习笔记3">
-                <i class="fa fa-chevron-left"></i> 事务与分布式事务原理与实现-沈询：学习笔记3
+              <a href="../图解TCP-IP：笔记1/" rel="next" title="图解TCP/IP：学习笔记1">
+                <i class="fa fa-chevron-left"></i> 图解TCP/IP：学习笔记1
               </a>
             
           </div>
@@ -515,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="../图解TCP-IP：学习笔记2/" rel="prev" title="图解TCP/IP：学习笔记2">
-                图解TCP/IP：学习笔记2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,10 +497,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/05/06/图解TCP-IP：笔记1/"
-     data-title="图解TCP/IP：学习笔记1"
+        <div class="ds-share flat" data-thread-key="2017/05/06/图解TCP-IP：学习笔记2/"
+     data-title="图解TCP/IP：学习笔记2"
      data-content=""
-     data-url="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：笔记1/">
+     data-url="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：学习笔记2/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -563,8 +527,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/05/06/图解TCP-IP：笔记1/"
-           data-title="图解TCP/IP：学习笔记1" data-url="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：笔记1/">
+      <div class="ds-thread" data-thread-key="2017/05/06/图解TCP-IP：学习笔记2/"
+           data-title="图解TCP/IP：学习笔记2" data-url="http://zhoumeng.xyz/2017/05/06/图解TCP-IP：学习笔记2/">
       </div>
     
   </div>
@@ -686,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#协议"><span class="nav-number">1.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OSI参考模型"><span class="nav-number">2.</span> <span class="nav-text">OSI参考模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传输方式的分类"><span class="nav-number">3.</span> <span class="nav-text">传输方式的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络的硬件设备"><span class="nav-number">4.</span> <span class="nav-text">网络的硬件设备</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-IP具体含义"><span class="nav-number">1.</span> <span class="nav-text">TCP/IP具体含义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-IP分层模型"><span class="nav-number">2.</span> <span class="nav-text">TCP/IP分层模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP-IP通信数据包示例"><span class="nav-number">3.</span> <span class="nav-text">TCP/IP通信数据包示例</span></a></li></ol></div>
             
 
           </div>
