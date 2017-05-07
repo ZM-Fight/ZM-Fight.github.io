@@ -94,14 +94,14 @@
 <meta property="og:site_name" content="梦工厂's blog">
 <meta property="og:description" content="图解TCP/IP：3-数据链路">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129101429912-691485352.png">
-<meta property="og:image" content="http://zhoumeng.xyz/CSMA/CD.png">
+<meta property="og:image" content="http://zhoumeng.xyz/CSMACD.png">
 <meta property="og:image" content="http://zhoumeng.xyz/令牌传递方式.png">
 <meta property="og:image" content="http://zhoumeng.xyz/屏幕快照 2017-04-18 下午8.40.23.png">
 <meta property="og:image" content="http://zhoumeng.xyz/环路检测技术.png">
 <meta property="og:image" content="http://zhoumeng.xyz/VLAN 虚拟局域网.png">
 <meta property="og:image" content="http://zhoumeng.xyz/以太网结构.png">
 <meta property="og:image" content="http://zhoumeng.xyz/以太网帧格式.png">
-<meta property="og:updated_time" content="2017-05-07T07:35:40.000Z">
+<meta property="og:updated_time" content="2017-05-07T07:51:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解TCP/IP：学习笔记3">
 <meta name="twitter:description" content="图解TCP/IP：3-数据链路">
@@ -382,7 +382,7 @@
 <ul>
 <li><p>争用方式：CSMA/CD</p>
 <p>CSMA/CD要求每个站提前检查冲突，一旦发生冲突，则尽早释放信道。工作原理如下：</p>
-<p><img src="CSMA/CD.png" alt="CSMA:CD"></p>
+<p><img src="CSMACD.png" alt="CSMACD"></p>
 <p>（1）如果载波信道上没有数据流动，则任何站都可以发送数据；</p>
 <p>（2）一边发送数据，一边检测冲突。（例如同轴电缆通过电压范围检查冲突）</p>
 <p>（3）一旦发生冲突时，放弃发送数据，同时立即释放载波信道。放弃发送后，随机延时一段时间，再重新争用介质，重新发送帧。</p>
@@ -428,10 +428,9 @@
 </ol>
 <h4 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h4><p>以太网在众多数据链路中使用最为广泛，最为著名；</p>
 <ol>
-<li>以太网结构：</li>
-</ol>
+<li><p>以太网结构：</p>
 <p><img src="以太网结构.png" alt="以太网结构"></p>
-<ol>
+</li>
 <li><p>以太网的分类：<br>以太网类型差异在于传输介质＋传输速度。</p>
 <p>在传输速度相同而传输介质不同时，可以连接允许更换传输介质的中继器或集线器；</p>
 <p>在传输速度不同的情况下，必须采用允许变更速度的设备如网桥、交换集线器或路由器；</p>
