@@ -94,14 +94,14 @@
 <meta property="og:site_name" content="梦工厂's blog">
 <meta property="og:description" content="图解TCP/IP：3-数据链路">
 <meta property="og:image" content="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129101429912-691485352.png">
-<meta property="og:image" content="CSMA:CD.png">
+<meta property="og:image" content="http://zhoumeng.xyz/CSMA/CD.png">
 <meta property="og:image" content="http://zhoumeng.xyz/令牌传递方式.png">
 <meta property="og:image" content="http://zhoumeng.xyz/屏幕快照 2017-04-18 下午8.40.23.png">
 <meta property="og:image" content="http://zhoumeng.xyz/环路检测技术.png">
 <meta property="og:image" content="http://zhoumeng.xyz/VLAN 虚拟局域网.png">
 <meta property="og:image" content="http://zhoumeng.xyz/以太网结构.png">
 <meta property="og:image" content="http://zhoumeng.xyz/以太网帧格式.png">
-<meta property="og:updated_time" content="2017-05-07T07:28:40.000Z">
+<meta property="og:updated_time" content="2017-05-07T07:35:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解TCP/IP：学习笔记3">
 <meta name="twitter:description" content="图解TCP/IP：3-数据链路">
@@ -367,9 +367,8 @@
 
       
         <p>数据链路是让互连计算机之间相互通信的一种协议，又指通信手段；</p>
-<p>各种数据链路一览：</p>
-<p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129101429912-691485352.png" alt=""></p>
-<h6 id="3-1-数据链路相关技术"><a href="#3-1-数据链路相关技术" class="headerlink" title="3.1 数据链路相关技术"></a><em>3.1</em> 数据链路相关技术</h6><ol>
+<h4 id="各种数据链路一览："><a href="#各种数据链路一览：" class="headerlink" title="各种数据链路一览："></a>各种数据链路一览：</h4><p><img src="http://images2015.cnblogs.com/blog/983980/201611/983980-20161129101429912-691485352.png" alt=""></p>
+<h4 id="数据链路相关技术"><a href="#数据链路相关技术" class="headerlink" title="数据链路相关技术"></a>数据链路相关技术</h4><ol>
 <li><p><strong>Mac地址</strong>：Mac 地址用于识别数据链路中互联的节点；</p>
 </li>
 <li><p><strong>半双工与全双工通信</strong>：</p>
@@ -383,7 +382,7 @@
 <ul>
 <li><p>争用方式：CSMA/CD</p>
 <p>CSMA/CD要求每个站提前检查冲突，一旦发生冲突，则尽早释放信道。工作原理如下：</p>
-<p><img src="CSMA:CD.png" alt="CSMA:CD"></p>
+<p><img src="CSMA/CD.png" alt="CSMA:CD"></p>
 <p>（1）如果载波信道上没有数据流动，则任何站都可以发送数据；</p>
 <p>（2）一边发送数据，一边检测冲突。（例如同轴电缆通过电压范围检查冲突）</p>
 <p>（3）一旦发生冲突时，放弃发送数据，同时立即释放载波信道。放弃发送后，随机延时一段时间，再重新争用介质，重新发送帧。</p>
@@ -427,7 +426,7 @@
 <p><img src="VLAN 虚拟局域网.png" alt="VLAN 虚拟局域网"></p>
 </li>
 </ol>
-<h6 id="3-2-以太网"><a href="#3-2-以太网" class="headerlink" title="3.2 以太网"></a><em>3.2</em> 以太网</h6><p>以太网在众多数据链路中使用最为广泛，最为著名；</p>
+<h4 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h4><p>以太网在众多数据链路中使用最为广泛，最为著名；</p>
 <ol>
 <li>以太网结构：</li>
 </ol>
@@ -637,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#3-1-数据链路相关技术"><span class="nav-number">1.</span> <span class="nav-text">3.1 数据链路相关技术</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-2-以太网"><span class="nav-number">2.</span> <span class="nav-text">3.2 以太网</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#各种数据链路一览："><span class="nav-number">1.</span> <span class="nav-text">各种数据链路一览：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据链路相关技术"><span class="nav-number">2.</span> <span class="nav-text">数据链路相关技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以太网"><span class="nav-number">3.</span> <span class="nav-text">以太网</span></a></li></ol></div>
             
 
           </div>
