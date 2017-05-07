@@ -87,22 +87,22 @@
 
 
 
-<meta name="description" content="图解TCP/IP：4-网络层">
+<meta name="description" content="网络层：IP协议+IP协议相关技术（DNS、ARP、ICMP、DHCP）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图解TCP/IP：学习笔记4">
 <meta property="og:url" content="http://zhoumeng.xyz/2017/05/07/图解TCP-IP：学习笔记4/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
-<meta property="og:description" content="图解TCP/IP：4-网络层">
+<meta property="og:description" content="网络层：IP协议+IP协议相关技术（DNS、ARP、ICMP、DHCP）">
 <meta property="og:image" content="http://zhoumeng.xyz/IP首部.png">
 <meta property="og:image" content="http://zhoumeng.xyz/全局单播地址.png">
 <meta property="og:image" content="http://zhoumeng.xyz/链路本地单播地址.png">
 <meta property="og:image" content="http://zhoumeng.xyz/唯一本地地址.png">
 <meta property="og:image" content="http://img1.51cto.com/attachment/201203/175333937.jpg">
 <meta property="og:image" content="http://zhoumeng.xyz/ARP包格式.png">
-<meta property="og:updated_time" content="2017-05-07T09:31:57.000Z">
+<meta property="og:updated_time" content="2017-05-07T12:07:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解TCP/IP：学习笔记4">
-<meta name="twitter:description" content="图解TCP/IP：4-网络层">
+<meta name="twitter:description" content="网络层：IP协议+IP协议相关技术（DNS、ARP、ICMP、DHCP）">
 <meta name="twitter:image" content="http://zhoumeng.xyz/IP首部.png">
 
 
@@ -349,7 +349,7 @@
 
           
               <div class="post-description">
-                  图解TCP/IP：4-网络层
+                  网络层：IP协议+IP协议相关技术（DNS、ARP、ICMP、DHCP）
               </div>
           
 
@@ -553,7 +553,7 @@
 <p><a href="https://www.zhihu.com/question/49679068/answer/117290667#showWechatShareTip" target="_blank" rel="external">Tcp/IP协议中，一端要给另一端发送数据，是先进行ARP请求和应答，还是先建立tcp连接？</a></p>
 <p><a href="https://www.zhihu.com/question/21011060" target="_blank" rel="external">为什么局域网要用mac地址而不直接使用IP地址，统一用IP地址不是更好吗</a></p>
 </blockquote>
-<h6 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h6><ol>
+<h5 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h5><ol>
 <li><p>ICMP主要功能包括：确认IP包是否成功送达目标地址，通知在发送过程当中IP包被废弃的具体原因，改善网络设置等；</p>
 </li>
 <li><p>ICMP的消息大致分为两类：一类是通知出错原因的错误消息，另一类是用于诊断的查询消息。</p>
@@ -574,7 +574,7 @@
 <p>​</p>
 </li>
 </ol>
-<h6 id="DHCP：自动设置IP地址，统一管理IP地址分配"><a href="#DHCP：自动设置IP地址，统一管理IP地址分配" class="headerlink" title="DHCP：自动设置IP地址，统一管理IP地址分配"></a>DHCP：自动设置IP地址，统一管理IP地址分配</h6><p>DHCP工作机制：</p>
+<h5 id="DHCP：自动设置IP地址，统一管理IP地址分配"><a href="#DHCP：自动设置IP地址，统一管理IP地址分配" class="headerlink" title="DHCP：自动设置IP地址，统一管理IP地址分配"></a>DHCP：自动设置IP地址，统一管理IP地址分配</h5><p>DHCP工作机制：</p>
 <p>（1）DHCP客户端发送DHCP发现包，要求设置IP地址和子网掩码；</p>
 <p>（2）DHCP服务器通知可以使用的网络设置；</p>
 <p>（3）DHCP客户端通知想要使用在（2）中通知的设置；</p>
@@ -627,6 +627,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="../图解TCP-IP：学习笔记5/" rel="prev" title="图解TCP/IP：学习笔记5">
+                图解TCP/IP：学习笔记5 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -698,7 +702,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="../../../../archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -771,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP协议"><span class="nav-number">1.</span> <span class="nav-text">IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">IP基础知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IP地址"><span class="nav-number">1.2.</span> <span class="nav-text">IP地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv4首部"><span class="nav-number">1.3.</span> <span class="nav-text">IPv4首部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv6"><span class="nav-number">1.4.</span> <span class="nav-text">IPv6</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP协议相关技术"><span class="nav-number">2.</span> <span class="nav-text">IP协议相关技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS查询过程"><span class="nav-number">2.1.</span> <span class="nav-text">DNS查询过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARP：查询网络设备对应的Mac地址"><span class="nav-number">2.2.</span> <span class="nav-text">ARP：查询网络设备对应的Mac地址</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#ICMP"><span class="nav-number">2.2.1.</span> <span class="nav-text">ICMP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DHCP：自动设置IP地址，统一管理IP地址分配"><span class="nav-number">2.2.2.</span> <span class="nav-text">DHCP：自动设置IP地址，统一管理IP地址分配</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP协议"><span class="nav-number">1.</span> <span class="nav-text">IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">IP基础知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IP地址"><span class="nav-number">1.2.</span> <span class="nav-text">IP地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv4首部"><span class="nav-number">1.3.</span> <span class="nav-text">IPv4首部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv6"><span class="nav-number">1.4.</span> <span class="nav-text">IPv6</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP协议相关技术"><span class="nav-number">2.</span> <span class="nav-text">IP协议相关技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS查询过程"><span class="nav-number">2.1.</span> <span class="nav-text">DNS查询过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARP：查询网络设备对应的Mac地址"><span class="nav-number">2.2.</span> <span class="nav-text">ARP：查询网络设备对应的Mac地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ICMP"><span class="nav-number">2.3.</span> <span class="nav-text">ICMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DHCP：自动设置IP地址，统一管理IP地址分配"><span class="nav-number">2.4.</span> <span class="nav-text">DHCP：自动设置IP地址，统一管理IP地址分配</span></a></li></ol></li></ol></div>
             
 
           </div>
