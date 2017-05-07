@@ -93,17 +93,17 @@
 <meta property="og:url" content="http://zhoumeng.xyz/2017/05/07/图解TCP-IP：学习笔记4/index.html">
 <meta property="og:site_name" content="梦工厂's blog">
 <meta property="og:description" content="图解TCP/IP：4-网络层">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/图解/IP首部.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/图解/全局单播地址.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/图解/链路本地单播地址.png">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/图解/唯一本地地址.png">
+<meta property="og:image" content="http://zhoumeng.xyz/IP首部.png">
+<meta property="og:image" content="http://zhoumeng.xyz/全局单播地址.png">
+<meta property="og:image" content="http://zhoumeng.xyz/链路本地单播地址.png">
+<meta property="og:image" content="http://zhoumeng.xyz/唯一本地地址.png">
 <meta property="og:image" content="http://img1.51cto.com/attachment/201203/175333937.jpg">
-<meta property="og:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/图解/ARP包格式.png">
-<meta property="og:updated_time" content="2017-05-07T07:54:38.000Z">
+<meta property="og:image" content="http://zhoumeng.xyz/ARP包格式.png">
+<meta property="og:updated_time" content="2017-05-07T08:52:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解TCP/IP：学习笔记4">
 <meta name="twitter:description" content="图解TCP/IP：4-网络层">
-<meta name="twitter:image" content="http://zhoumeng.xyz/Users/zhoumeng/Desktop/图解/IP首部.png">
+<meta name="twitter:image" content="http://zhoumeng.xyz/IP首部.png">
 
 
 
@@ -457,7 +457,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">IP地址： 172.21.100.52	</div><div class="line">子网掩码：255.255.255.192</div><div class="line">IP地址： 172.21.100.52	／26</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h6 id="IPv4首部"><a href="#IPv4首部" class="headerlink" title="IPv4首部"></a>IPv4首部</h6><p><img src="/Users/zhoumeng/Desktop/图解/IP首部.png" alt="IP首部"></p>
+<h6 id="IPv4首部"><a href="#IPv4首部" class="headerlink" title="IPv4首部"></a>IPv4首部</h6><p><img src="IP首部.png" alt="IP首部"></p>
 <ol>
 <li><p>版本：4位，表示IP首部的版本号；</p>
 </li>
@@ -509,14 +509,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2000:0:0:0:0:0:0:1-&gt;2000::1(省略表示)</div></pre></td></tr></table></figure>
 <p>（1）全局单播地址：（48比特全局路由前缀+16比特子网ID）网络标识+（64比特接口ID）主机标识</p>
 <p>​    接口ID可以为Mac地址的值或随机产生与Mac地址没有关系的临时地址；</p>
-<p><img src="/Users/zhoumeng/Desktop/图解/全局单播地址.png" alt="全局单播地址"></p>
+<p><img src="全局单播地址.png" alt="全局单播地址"></p>
 <p>（2）链路本地单播地址：<code>FE80::/10</code></p>
 <p>​    链路本地单播地址是指在同一个数据链路内唯一的地址，用于不经过路由器，同一个链路内中的通信；</p>
 <p>​    接口ID通常为64位的Mac地址；</p>
-<p><img src="/Users/zhoumeng/Desktop/图解/链路本地单播地址.png" alt="链路本地单播地址"></p>
+<p><img src="链路本地单播地址.png" alt="链路本地单播地址"></p>
 <p>（3）唯一本地地址：<code>FC00::/7</code></p>
 <p>​    唯一本地地址是不进行互联网通信时所使用的地址，或通过NAT或网关与互联网通信；</p>
-<p><img src="/Users/zhoumeng/Desktop/图解/唯一本地地址.png" alt="唯一本地地址"></p>
+<p><img src="唯一本地地址.png" alt="唯一本地地址"></p>
 </li>
 </ol>
 <h4 id="IP协议相关技术"><a href="#IP协议相关技术" class="headerlink" title="IP协议相关技术"></a>IP协议相关技术</h4><blockquote>
@@ -541,7 +541,7 @@
 <li><p>ARP的工作机制：</p>
 <p>同一数据链路内，主机a为了获取主机b的Mac地址，需要广播发送ARP请求包；</p>
 <p>主机收到ARP请求包，如果目标IP地址就是自己，那么就将自己的Mac地址写入ARP响应包返回；</p>
-<p><img src="/Users/zhoumeng/Desktop/图解/ARP包格式.png" alt="ARP包格式"></p>
+<p><img src="ARP包格式.png" alt="ARP包格式"></p>
 </li>
 <li><p>ARP缓存表：</p>
 <p>避免每次发IP数据都要进行ARP请求来获取Mac地址，减少网络流量。</p>
