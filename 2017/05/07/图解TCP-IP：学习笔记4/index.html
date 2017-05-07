@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://zhoumeng.xyz/唯一本地地址.png">
 <meta property="og:image" content="http://img1.51cto.com/attachment/201203/175333937.jpg">
 <meta property="og:image" content="http://zhoumeng.xyz/ARP包格式.png">
-<meta property="og:updated_time" content="2017-05-07T09:12:21.000Z">
+<meta property="og:updated_time" content="2017-05-07T09:31:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解TCP/IP：学习笔记4">
 <meta name="twitter:description" content="图解TCP/IP：4-网络层">
@@ -522,7 +522,7 @@
 <h4 id="IP协议相关技术"><a href="#IP协议相关技术" class="headerlink" title="IP协议相关技术"></a>IP协议相关技术</h4><blockquote>
 <p>IP是让最终目标主机收到数据包，但仅有IP是无法实现通信的，还需要有解析主机名称和Mac地址的功能，以及数据包在发送过程中异常情况处理的功能。</p>
 </blockquote>
-<h6 id="DNS查询过程"><a href="#DNS查询过程" class="headerlink" title="DNS查询过程"></a>DNS查询过程</h6><p><img src="http://img1.51cto.com/attachment/201203/175333937.jpg" alt=""></p>
+<h5 id="DNS查询过程"><a href="#DNS查询过程" class="headerlink" title="DNS查询过程"></a>DNS查询过程</h5><p><img src="http://img1.51cto.com/attachment/201203/175333937.jpg" alt=""></p>
 <ol>
 <li>在浏览器中输入www.qq.com域名，操作系统会先检查自己本地的hosts文件是否有这个网址映射关系，如果有，就先调用这个IP地址映射，完成域名解析。 </li>
 <li>如果hosts里没有这个域名的映射，则查找本地DNS解析器缓存，是否有这个网址映射关系，如果有，直接返回，完成域名解析。 </li>
@@ -532,10 +532,9 @@
 <li>如果用的是转发模式，此DNS服务器就会把请求转发至上一级DNS服务器，由上一级服务器进行解析，上一级服务器如果不能解析，或找根DNS或把转请求转至上上级，以此循环。不管是本地DNS服务器用是是转发，还是根提示，最后都是把结果返回给本地DNS服务器，由此DNS服务器再返回给客户机。 </li>
 </ol>
 <blockquote>
-<p><a href="http://369369.blog.51cto.com/319630/812889/" target="_blank" rel="external">DNS原理及其解析过程</a></p>
-<p><a href="http://jaminzhang.github.io/dns/The-Reason-of-There-Is-Only-13-DNS-Root-Servers/" target="_blank" rel="external">为什么 DNS 根服务器只有 13 个 IP</a></p>
+<p><a href="http://369369.blog.51cto.com/319630/812889/" target="_blank" rel="external">DNS原理及其解析过程</a><br><a href="http://jaminzhang.github.io/dns/The-Reason-of-There-Is-Only-13-DNS-Root-Servers/" target="_blank" rel="external">为什么 DNS 根服务器只有 13 个 IP</a><br><a href="http://blog.jobbole.com/110165/" target="_blank" rel="external">一次 DNS 缓存引发的惨案</a><br><a href="http://www.guokr.com/question/554991/" target="_blank" rel="external">从输入 URL 到页面加载完的过程中都发生了什么事情？</a></p>
 </blockquote>
-<h6 id="ARP：查询网络设备对应的Mac地址"><a href="#ARP：查询网络设备对应的Mac地址" class="headerlink" title="ARP：查询网络设备对应的Mac地址"></a>ARP：查询网络设备对应的Mac地址</h6><ol>
+<h5 id="ARP：查询网络设备对应的Mac地址"><a href="#ARP：查询网络设备对应的Mac地址" class="headerlink" title="ARP：查询网络设备对应的Mac地址"></a>ARP：查询网络设备对应的Mac地址</h5><ol>
 <li><p>ARP只适用于IPv4，不能用于IPv6，IPv6可以用ICMPv6替代ARP发送邻居探索消息；</p>
 </li>
 <li><p>ARP的工作机制：</p>
@@ -772,7 +771,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP协议"><span class="nav-number">1.</span> <span class="nav-text">IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">IP基础知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IP地址"><span class="nav-number">1.2.</span> <span class="nav-text">IP地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv4首部"><span class="nav-number">1.3.</span> <span class="nav-text">IPv4首部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv6"><span class="nav-number">1.4.</span> <span class="nav-text">IPv6</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP协议相关技术"><span class="nav-number">2.</span> <span class="nav-text">IP协议相关技术</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#DNS查询过程"><span class="nav-number">2.0.1.</span> <span class="nav-text">DNS查询过程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ARP：查询网络设备对应的Mac地址"><span class="nav-number">2.0.2.</span> <span class="nav-text">ARP：查询网络设备对应的Mac地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ICMP"><span class="nav-number">2.0.3.</span> <span class="nav-text">ICMP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DHCP：自动设置IP地址，统一管理IP地址分配"><span class="nav-number">2.0.4.</span> <span class="nav-text">DHCP：自动设置IP地址，统一管理IP地址分配</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP协议"><span class="nav-number">1.</span> <span class="nav-text">IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">IP基础知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IP地址"><span class="nav-number">1.2.</span> <span class="nav-text">IP地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv4首部"><span class="nav-number">1.3.</span> <span class="nav-text">IPv4首部</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IPv6"><span class="nav-number">1.4.</span> <span class="nav-text">IPv6</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP协议相关技术"><span class="nav-number">2.</span> <span class="nav-text">IP协议相关技术</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS查询过程"><span class="nav-number">2.1.</span> <span class="nav-text">DNS查询过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARP：查询网络设备对应的Mac地址"><span class="nav-number">2.2.</span> <span class="nav-text">ARP：查询网络设备对应的Mac地址</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#ICMP"><span class="nav-number">2.2.1.</span> <span class="nav-text">ICMP</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DHCP：自动设置IP地址，统一管理IP地址分配"><span class="nav-number">2.2.2.</span> <span class="nav-text">DHCP：自动设置IP地址，统一管理IP地址分配</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
